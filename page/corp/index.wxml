@@ -1,0 +1,54 @@
+<view class="container">
+  <button 
+    wx:if="{{!enrolled}}" 
+    bindtap="enroll" 
+    class="enroll-button"
+  >
+    {{isVerifying?'审核中...':'企业入驻'}}
+  </button>
+  
+  <view wx:else class="page-body">
+    <view class="page-section">
+      <view bindtap="changeCorpInfo" class="corp-info">
+        <image src="{{logo}}"></image>
+        <text>{{corp}}</text>
+        <view class="arrow"></view>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="navigator-box">
+        <navigator url="account/account?openId={{openId}}" class="navigator">
+            <image class="navigator-img-front" src="/image/account.jpg"></image>
+            <view class="navigator-text">账户</view>
+            <view class="navigator-arrow"></view>
+          </navigator>
+        <navigator url="order/order" class="navigator">
+          <image class="navigator-img-front" src="/image/order.jpg"></image>
+          <view class="navigator-text">订单</view>
+          <view wx:if="{{newOrder}}"class="red-dot"></view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="message/message" class="navigator">
+          <image class="navigator-img-front" src="/image/message.jpg"></image>
+          <view class="navigator-text">消息</view>
+          <view wx:if="{{newMessage}}"class="red-dot"></view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="navigator-box">
+        <navigator url="requirement/index" class="navigator">
+          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+          <view class="navigator-text">需求</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="product/index" class="navigator">
+          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+          <view class="navigator-text">产品</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

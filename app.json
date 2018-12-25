@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "page/main/index",
+    "page/corp/index",
+    "page/main/web-view/web-view",
+    "page/corp/order/order",
+    "page/corp/message/message",
+    "page/corp/account/account",
+    "page/corp/account-detail/account-detail",
+    "page/corp-product/index",
+    "page/corp-product/product-detail/index",
+    "page/corp-product/pay/index",
+    "page/corp/requirement/index",
+    "page/corp/requirement/shelve/index",
+    "page/corp/product/index",
+    "page/corp/product/shelve/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "子繁社企业平台",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#000000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "page/main/index",
+        "iconPath": "image/index.jpg",
+        "selectedIconPath": "image/index_HL.jpg",
+        "text": "首页"
+      },
+      {
+        "pagePath": "page/corp-product/index",
+        "iconPath": "image/personal.png",
+        "selectedIconPath": "image/personal_HL.jpg",
+        "text": "产品"
+      },
+      {
+        "pagePath": "page/corp/index",
+        "iconPath": "image/personal.png",
+        "selectedIconPath": "image/personal_HL.jpg",
+        "text": "企业中心"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

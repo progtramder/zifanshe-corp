@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image class="cover-image" src="{{cover}}"/>
+      <view class="overlap-icon iconfont icon-image" bindtap="addCover"></view>
+    </view>
+    <view class="product-info-item">
+      <view>名称</view>
+      <input value="{{name}}" bindinput="getProductName" placeholder-class="placeholder" placeholder="产品名称" />
+    </view>
+    <view class="product-info-item">
+      <view>价格￥</view>
+      <input type="digit" value="{{price}}" bindblur="getProductPrice" placeholder-class="placeholder" placeholder="产品价格"></input>
+    </view>
+    <view class="product-info-item">
+      <textarea auto-height="true" value="{{brief}}" bindinput="getProductBrief" placeholder-class="placeholder" placeholder="产品简介"></textarea>
+    </view>
+    <view class="product-content-title">产品详情</view>
+    <rich-editor id="rich_editor" bind:changed="detailChanged"/>
+    <view class="float-bar" bindtap="onFinish">完成</view>
+  </view>
+</view>

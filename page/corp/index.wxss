@@ -1,0 +1,59 @@
+@import "../common/index.wxss";
+
+.enroll-button {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #0084FF;
+  color: white;
+}
+.corp-info {
+  display:flex;
+  height: 180rpx;
+  align-items: center;
+  background-color: white;
+  padding: 0 30rpx;
+}
+.corp-info image {
+  border-radius: 10rpx;
+  width: 200rpx;
+  height: 150rpx;
+  display: block;
+}
+.corp-info text {
+  margin-left: 20rpx;
+  flex: 1;
+}
+
+.arrow {
+  padding-right: 26rpx;
+  position: relative;
+}
+.arrow:after {
+  content: " ";
+  display: block;
+  height: 15rpx;
+  width: 15rpx;
+  border-width: 3rpx 3rpx 0 0;
+  border-color: gray;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  margin-top: -8rpx;
+  right: 10rpx;
+}
+
+.red-dot {
+  position: relative;
+}
+.red-dot:after {
+  content: "";
+  display: block;
+  background-color: red;
+  height: 20rpx;
+  width: 20rpx;
+  border-radius: 50%;
+}

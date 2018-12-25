@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "产品",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit-plus/index"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "需求",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit-plus/index"
+  }
+}

@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="page-body">
+    <swiper indicator-dots="true" circular="true" bindchange="swiperItemChanged"
+      bindtap="swiperItemTap" autoplay="true" interval="3000" duration="1000">
+      <block wx:for="{{bulletins}}" wx:key="item">
+        <swiper-item>
+          <image src="{{item.image}}" class="swiper-item" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
