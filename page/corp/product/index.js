@@ -17,7 +17,7 @@ Page({
     const db = wx.cloud.database();
     db.collection('product').where({
       _openid: this.data.openId
-    }).limit(10).field({ detail: false }).get().then((res) => {
+    }).limit(10).get().then((res) => {
       wx.hideNavigationBarLoading()
       this.setData(
         {
@@ -33,14 +33,24 @@ Page({
       _openid: this.data.openId
     }).skip(
       this.data.product.length
-    ).limit(10).field({ detail: false }).get().then((res) => {
-      let pdt = this.data.product
-      pdt.push(...res.data)
+    ).limit(10).get().then((res) => {
+      let product = this.data.product
+      product.push(...res.data)
       this.setData(
         {
-          product: pdt,
-          isEmpty: res.data.length == 0
+          product
         })
+    })
+  },
+
+  clearProduct(deleted) {
+    const files = []
+    files.push(deleted.cover)
+    deleted.detail.forEach(e => {
+      if (e.type != 'text') files.push(e.src)
+    })
+    wx.cloud.deleteFile({
+      fileList: files
     })
   },
 
@@ -56,10 +66,11 @@ Page({
           db.collection('product').doc(
             product[index]._id
           ).remove().then(res => {
-            product.splice(index, 1)
+            const deleted = product.splice(index, 1)
             this.setData({
               product
             })
+            this.clearProduct(deleted[0])
           }).catch(err => {
             console.log(err)
           })

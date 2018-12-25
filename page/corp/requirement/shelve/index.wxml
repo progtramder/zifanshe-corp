@@ -1,2 +1,18 @@
-<!--miniprogram/page/corp/requirement/shelve/index.wxml-->
-<text>miniprogram/page/corp/requirement/shelve/index.wxml</text>
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image class="cover-image" src="{{cover}}"/>
+      <view class="overlap-icon iconfont icon-image" bindtap="addCover"></view>
+    </view>
+    <view class="requirement-info-item">
+      <view>标题</view>
+      <input value="{{name}}" bindinput="getName" placeholder-class="placeholder" placeholder="需求标题" />
+    </view>
+    <view class="requirement-info-item">
+      <textarea auto-height="true" value="{{brief}}" bindinput="getBrief" placeholder-class="placeholder" placeholder="需求简介"></textarea>
+    </view>
+    <view class="requirement-content-title">需求详情</view>
+    <rich-editor id="rich_editor" bind:add="addDetail" bind:delete="deleteDetail"/>
+    <view class="float-bar" bindtap="onFinish">完成</view>
+  </view>
+</view>

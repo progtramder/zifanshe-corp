@@ -34,7 +34,7 @@ Component({
       this.setData({
         nodeList
       })
-      this.triggerEvent("changed", nodeList);
+      this.triggerEvent("add", nodeList);
     },
     /**
      * 事件：添加图片
@@ -56,7 +56,7 @@ Component({
           this.setData({
             nodeList
           })
-          this.triggerEvent("changed", nodeList);
+          this.triggerEvent("add", nodeList);
         },
       })
     },
@@ -75,7 +75,7 @@ Component({
           this.setData({
             nodeList
           })
-          this.triggerEvent("changed", nodeList);
+          this.triggerEvent("add", nodeList);
         },
       })
     },
@@ -85,17 +85,28 @@ Component({
       let nodeList = this.data.nodeList;
       nodeList[index].content = e.detail.value
     },
+
+    imageTap(e) {
+      const imgPath = e.currentTarget.dataset.imgpath
+      let imgPaths = []
+      imgPaths.push(imgPath)
+      wx.previewImage({
+        urls: imgPaths,
+        current: imgPath
+      })
+    },
+
     /**
      * 事件：删除节点
      */
     deleteNode: function (e) {
       const index = e.currentTarget.dataset.index;
       let nodeList = this.data.nodeList;
-      nodeList.splice(index, 1);
+      const nodes = nodeList.splice(index, 1);
       this.setData({
         nodeList,
       })
-      this.triggerEvent("changed", nodeList);
+      this.triggerEvent("delete", {nodeList, node: nodes[0]});
     },
 
     init(nodeList) {

@@ -22,7 +22,13 @@
         </textarea>
       </block>
       <block wx:if="{{node.type === 'image'}}">
-        <image class="editor-image" src="{{node.src}}" mode="widthFix"></image>
+        <image 
+          class="editor-image" 
+          src="{{node.src}}" 
+          mode="widthFix"
+          bindtap="imageTap" 
+          data-imgpath="{{node.src}}"
+        />
       </block>
       <block wx:if="{{node.type === 'video'}}">
         <video class="editor-video" src="{{node.src}}" controls></video>

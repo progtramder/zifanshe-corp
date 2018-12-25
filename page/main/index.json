@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "子繁社企业平台"
+    "navigationBarTitleText": "子繁社企业平台",
+    "usingComponents": {
+      "exhibit-item": "/components/exhibit/exhibit"
+    }
 }

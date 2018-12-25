@@ -61,7 +61,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: this.data.product.name,
-      path: `page/zifan-product/product-detail/index?id=${this.data.product._id}`
+      path: `page/corp-product/product-detail/index?id=${this.data.product._id}`
     }
   }
 })

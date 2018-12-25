@@ -17,11 +17,11 @@ Page({
     const db = wx.cloud.database();
     db.collection('requirement').where({
       _openid: this.data.openId
-    }).limit(10).field({ detail: false }).get().then((res) => {
+    }).limit(10).get().then((res) => {
       wx.hideNavigationBarLoading()
       this.setData(
         {
-          product: res.data,
+          requirement: res.data,
           isEmpty: res.data.length == 0
         })
     })
@@ -32,20 +32,31 @@ Page({
     db.collection('requirement').where({
       _openid: this.data.openId
     }).skip(
-      this.data.product.length
-    ).limit(10).field({ detail: false }).get().then((res) => {
-      let pdt = this.data.product
-      pdt.push(...res.data)
+      this.data.requirement.length
+    ).limit(10).get().then((res) => {
+      let requirement = this.data.requirement
+      requirement.push(...res.data)
       this.setData(
         {
-          product: pdt
+          requirement
         })
     })
   },
 
-  deleteProduct(e) {
+  clearRequirement(deleted) {
+    const files = []
+    files.push(deleted.cover)
+    deleted.detail.forEach(e => {
+      if (e.type != 'text') files.push(e.src)
+    })
+    wx.cloud.deleteFile({
+      fileList: files
+    })
+  },
+
+  deleteRequirement(e) {
     const index = e.currentTarget.dataset.index
-    let product = this.data.product
+    let requirement = this.data.requirement
     wx.showModal({
       content: '确定删除吗？',
       confirmColor: '#F56C6C',
@@ -53,15 +64,18 @@ Page({
         if (res.confirm) {
           const db = wx.cloud.database();
           db.collection('requirement').doc(
-            product[index]._id
+            requirement[index]._id
           ).remove().then(res => {
-            product.splice(index, 1)
+            const deleted = requirement.splice(index, 1)
             this.setData({
-              product
+              requirement
             })
+            this.clearRequirement(deleted[0])
           }).catch(err => {
             console.log(err)
           })
+        } else {
+          this.selectComponent(`#${e.currentTarget.id}`).reset()
         }
       }
     })

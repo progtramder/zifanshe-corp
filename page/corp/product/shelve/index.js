@@ -9,7 +9,8 @@ Page({
     name:  '',
     brief: '',
     price: '',
-    detail: []
+    detail: [],
+    deletedFiles: [] //对于视频和图片两种类型删除数据库的同时还要删除文件
   },
 
   /**
@@ -122,7 +123,7 @@ Page({
         if (e.type != 'text' && !e.src.match(/^cloud:\/\//)) {
           const res = await new Promise((resolve, reject) => {
             wx.cloud.uploadFile({
-              cloudPath: `product/${productId}-${index}${suffix(e.src)}`,
+              cloudPath: `product/${productId}-${Date.now()}${suffix(e.src)}`,
               filePath: e.src,
               success: res => {
                 resolve({ file: res.fileID })
@@ -135,16 +136,27 @@ Page({
           e.src = res.file
         }
       }
-      await db.collection('product').doc(productId).update({
+      await wx.cloud.callFunction({
+        name: 'database',
         data: {
-          cover: this.data.cover,
-          name: this.data.name,
-          brief: this.data.brief,
-          price: this.data.price * 100,
-          detail: this.data.detail
-        },
+          func: 'dbupdate',
+          collect: 'product',
+          docId: productId,
+          data: {
+            cover: this.data.cover,
+            name: this.data.name,
+            brief: this.data.brief,
+            price: this.data.price * 100,
+            detail: this.data.detail
+          }
+        }
       })
 
+      if (this.data.deletedFiles.length > 0) {
+        wx.cloud.deleteFile({
+          fileList: this.data.deletedFiles
+        })
+      }
       wx.navigateBack()
     } catch(err) {
       this.alert('请检查网络')
@@ -162,10 +174,20 @@ Page({
     })
   },
 
-  detailChanged(event) {
+  addDetail(event) {
     let nodeList = event.detail
     this.setData({
       detail: nodeList
     })
   },
+
+  deleteDetail(event) {
+    const {nodeList, node} = event.detail
+    this.setData({
+      detail: nodeList
+    })
+    if (node.type != 'text' && node.src.match(/^cloud:\/\//)) {
+      this.data.deletedFiles.push(node.src)
+    }
+  }
 })

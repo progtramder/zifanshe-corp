@@ -10,7 +10,12 @@
       <view class="product-content">
         <block wx:for="{{product.detail}}" wx:key="item">
           <view wx:if="{{item.type=='text'}}" class="product-text">{{item.content}}</view>
-          <image bindtap="imageTap" wx:if="{{item.type=='image'}}" mode="widthFix" class="product-image" src="{{item.src}}"/>
+          <image 
+            wx:if="{{item.type=='image'}}" 
+            mode="widthFix" 
+            class="product-image" 
+            src="{{item.src}}"
+          />
           <view wx:if="{{item.type=='video'}}" class="product-video">
             <video src="{{item.src}}" controls/>
           </view>

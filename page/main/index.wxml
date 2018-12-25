@@ -8,5 +8,16 @@
         </swiper-item>
       </block>
     </swiper>
+    <view class="corp-requirement">
+      <view class="corp-requirement-title">企业需求</view>
+      <view wx:for="{{requirement}}" wx:key="item" class="requirement-item-wrap">
+        <exhibit-item url="../corp-requirement/index?id={{item._id}}"
+          imgpath="{{item.cover}}"
+          title="{{item.name}}"
+          body="{{item.brief}}"
+          footer=""
+        />
+      </view>
+    </view>
   </view>
 </view>

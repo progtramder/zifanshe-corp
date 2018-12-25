@@ -8,6 +8,7 @@
       <exhibit-item url="shelve/index?id={{item._id}}"
         candelete="true"
         data-index="{{index}}"
+        id="item{{index}}"
         bind:delete="deleteRequirement"
         imgpath="{{item.cover}}"
         title="{{item.name}}"

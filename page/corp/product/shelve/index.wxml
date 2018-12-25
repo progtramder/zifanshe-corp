@@ -16,7 +16,7 @@
       <textarea auto-height="true" value="{{brief}}" bindinput="getProductBrief" placeholder-class="placeholder" placeholder="产品简介"></textarea>
     </view>
     <view class="product-content-title">产品详情</view>
-    <rich-editor id="rich_editor" bind:changed="detailChanged"/>
+    <rich-editor id="rich_editor" bind:add="addDetail" bind:delete="deleteDetail"/>
     <view class="float-bar" bindtap="onFinish">完成</view>
   </view>
 </view>

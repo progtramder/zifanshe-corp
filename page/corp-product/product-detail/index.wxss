@@ -24,10 +24,10 @@
   background-color: white;
   padding: 30rpx 50rpx;
   color: red;
-  margin-bottom: 5rpx;
 }
 
 .product-container {
+  margin-top: 5rpx;
   width: 100%;
   background-color: white;
   padding-left: 50rpx;

@@ -13,7 +13,8 @@
     "page/corp/requirement/index",
     "page/corp/requirement/shelve/index",
     "page/corp/product/index",
-    "page/corp/product/shelve/index"
+    "page/corp/product/shelve/index",
+    "page/corp-requirement/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="page-body">
+    <view class="cover">
+      <image src="{{requirement.cover}}"/>
+      <view>{{requirement.name}}</view>
+    </view>
+    <view class="requirement-brief">{{requirement.brief}}</view>
+    <view class="requirement-container">
+      <view class="requirement-content">
+        <block wx:for="{{requirement.detail}}" wx:key="item">
+          <view wx:if="{{item.type=='text'}}" class="requirement-text">{{item.content}}</view>
+          <image 
+            wx:if="{{item.type=='image'}}" 
+            mode="widthFix" 
+            class="requirement-image" 
+            src="{{item.src}}"
+          />
+          <view wx:if="{{item.type=='video'}}" class="requirement-video">
+            <video src="{{item.src}}" controls/>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
