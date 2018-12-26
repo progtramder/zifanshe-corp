@@ -1,28 +1,28 @@
 Page({
-  onLoad() {
+  onShow() {
     const db = wx.cloud.database();
-    db.collection('consultant').where({
+    db.collection('corp').where({
       status: 'verifying'
     }).limit(10).get().then((res) => {
       this.setData(
         {
-          consultants: res.data
+          corps: res.data
         })
     })
   },
 
   onReachBottom() {
     const db = wx.cloud.database();
-    db.collection('consultant').where({
+    db.collection('corp').where({
       status: 'verifying'
     }).skip(
-      this.data.consultants.length
+      this.data.corps.length
     ).limit(10).get().then((res) => {
-      let cons = this.data.consultants
-      cons.push(...res.data)
+      let corps = this.data.corps
+      corps.push(...res.data)
       this.setData(
         {
-          consultants: cons
+          corps
         })
     })
   }

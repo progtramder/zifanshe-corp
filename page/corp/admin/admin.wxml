@@ -1,15 +1,12 @@
-<view class="page-container">
-  <view class="consultants-page-body">
-    <view class="consultants-page-title">
+<view class="container">
+  <view class="page-body">
+    <view wx:for="{{corps}}" wx:key="item" class="exhibit-item-wrapper">
+      <exhibit-item url="../verify/index?id={{item._id}}"
+        imgpath="{{item.logo}}"
+        title="{{item.name}}"
+        body="{{item.intro}}"
+        footer=""
+      />
     </view>
-    <block wx:for="{{consultants}}" wx:key="*this">
-      <navigator url="../verify/verify?id={{item._id}}" class="consultants-view-item">
-        <image src="{{item.avatar}}"></image>
-        <view> 
-          <view class="consultant-name">{{item.name}}</view>
-          <view class="consultant-intro">{{item.introduction}}</view>
-        </view>
-      </navigator>
-    </block>
   </view>
 </view>

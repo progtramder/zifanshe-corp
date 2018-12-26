@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="page-body">
+    <view class="logo-wrapper">
+      <image class="logo" bindtap="changeLogo" src="{{logo}}"></image>
+      <view wx:if="{{logo==''}}" class="overlap-icon iconfont icon-image" bindtap="changeLogo"></view>
+    </view>
+    <view class="corp-info-box">
+      <view class="corp-info-item">
+        <view>公司名称</view>
+        <input value="{{name}}" bindinput="getName" placeholder-class="placeholder" placeholder="公司名称" />
+      </view>
+      <view class="corp-info-item">
+        <view>联系方式</view>
+        <input value="{{phone}}" bindinput="getPhone" type="number" placeholder-class="placeholder" placeholder="电话号码" />
+      </view>
+    </view>
+    <view class="corp-intro-title">公司介绍</view>
+    <view class="corp-intro-wrapper">
+      <textarea 
+        cursor-spacing="50" 
+        auto-height="true" 
+        bindinput="getIntro" 
+        class="corp-intro" 
+        value="{{intro}}">
+      </textarea>
+    </view>
+    <view class="float-bar" bindtap="onFinish">完成</view>
+  </view>
+</view>

@@ -20,7 +20,7 @@
   border-radius: 10rpx;
   width: 200rpx;
   height: 150rpx;
-  display: block;
+  box-sizing: border-box;
 }
 .corp-info text {
   margin-left: 20rpx;

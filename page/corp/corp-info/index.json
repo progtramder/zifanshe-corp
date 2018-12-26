@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "企业信息",
+  "usingComponents": {
+    "rich-editor": "/components/rich-editor-plus/index"
+  }
+}

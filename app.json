@@ -14,7 +14,10 @@
     "page/corp/requirement/shelve/index",
     "page/corp/product/index",
     "page/corp/product/shelve/index",
-    "page/corp-requirement/index"
+    "page/corp-requirement/index",
+    "page/corp/corp-info/index",
+    "page/corp/admin/admin",
+    "page/corp/verify/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

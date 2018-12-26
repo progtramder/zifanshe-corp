@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "待审核顾问"
+  "navigationBarTitleText": "待审核企业",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit/exhibit"
+  }
 }

@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="page-body">
+    <view class="logo-wrapper">
+      <image class="logo" src="{{logo}}"></image>
+    </view>
+    <view class="corp-info-box">
+      <view class="corp-info-item">
+        <view>公司名称</view>
+        <input value="{{name}}" disabled="true" />
+      </view>
+      <view class="corp-info-item">
+        <view>联系方式</view>
+        <input value="{{phone}}" disabled="true" />
+      </view>
+    </view>
+    <view class="corp-intro-title">公司介绍</view>
+    <view class="corp-intro-wrapper">
+      <view class="corp-intro">{{intro}}</view>
+    </view>
+    <view class="float-bar" bindtap="approve">通过审核</view>
+  </view>
+</view>

@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -16,7 +17,7 @@ Page({
     wx.showNavigationBarLoading()
     const db = wx.cloud.database();
     db.collection('requirement').where({
-      _openid: this.data.openId
+      owner: app.getCorpId()
     }).limit(10).get().then((res) => {
       wx.hideNavigationBarLoading()
       this.setData(
@@ -30,7 +31,7 @@ Page({
   onReachBottom() {
     const db = wx.cloud.database();
     db.collection('requirement').where({
-      _openid: this.data.openId
+      owner: app.getCorpId()
     }).skip(
       this.data.requirement.length
     ).limit(10).get().then((res) => {

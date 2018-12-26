@@ -140,6 +140,7 @@ input {
 }
 .float-bar {
   background-color: #0084FF;
+  color: white;
   position: fixed;
   width: 100%;
   height: 100rpx;

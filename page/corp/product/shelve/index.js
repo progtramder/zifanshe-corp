@@ -1,4 +1,5 @@
 const regeneratorRuntime = require("../../../common/runtime")
+const app = getApp()
 Page({
 
   /**
@@ -93,6 +94,7 @@ Page({
       if (!productId) {
         const res = await db.collection('product').add({
           data: {
+            owner: app.getCorpId()
           },
         })
         productId = res._id

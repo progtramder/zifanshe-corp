@@ -23,10 +23,3 @@ swiper {
   border-bottom-width: .1rpx;
   border-bottom-style: solid;
 }
-.requirement-item-wrap {
-  padding: 10rpx 20rpx 10rpx;
-  background-color: white;
-  border-bottom-color: #f0f0f0;
-  border-bottom-width: .1rpx;
-  border-bottom-style: solid;
-}

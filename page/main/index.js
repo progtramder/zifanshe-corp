@@ -32,14 +32,6 @@ Page({
   onShow() {
     this.getRequirement()
   },
-
-  logIn() {
-    wx.cloud.callFunction({
-      name: 'login'
-    }).then(res => {
-      const { openId } = res.result
-    })
-  },
   
   async getRequirement() {
     try {

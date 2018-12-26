@@ -1,13 +1,12 @@
-<view class="container">
-  <button 
-    wx:if="{{!enrolled}}" 
-    bindtap="enroll" 
-    class="enroll-button"
-  >
-    {{isVerifying?'审核中...':'企业入驻'}}
-  </button>
-  
-  <view wx:else class="page-body">
+<button 
+  wx:if="{{enrolled==false}}" 
+  bindtap="enroll" 
+  class="enroll-button"
+>
+  企业入驻
+</button>
+<view wx:if="{{enrolled==true}}" class="container">
+  <view class="page-body">
     <view class="page-section">
       <view bindtap="changeCorpInfo" class="corp-info">
         <image src="{{logo}}"></image>
@@ -46,6 +45,16 @@
         <navigator url="product/index" class="navigator">
           <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
           <view class="navigator-text">产品</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
+    </view>
+    <view wx:if="{{superAdmin}}"class="page-section">
+      <view class="navigator-box">
+        <navigator url="admin/admin" class="navigator">
+          <image class="navigator-img-front" src="/image/personal_HL.jpg"></image>
+          <view class="navigator-text">平台管理员</view>
+          <view wx:if="{{newVerifying}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>
       </view>
