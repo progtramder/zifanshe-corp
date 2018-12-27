@@ -86,12 +86,11 @@ Component({
     },
 
     imageTap(e) {
-      const imgPath = e.currentTarget.dataset.imgpath
       let imgPaths = []
-      imgPaths.push(imgPath)
+      imgPaths.push(e.currentTarget.dataset.imgpath)
       wx.previewImage({
         urls: imgPaths,
-        current: imgPath
+        current: imgPaths[0]
       })
     },
 

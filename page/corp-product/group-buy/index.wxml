@@ -1,8 +1,0 @@
-<view class="container">
-  <view class="page-body">
-    <view style="margin-bottom: 120rpx">
-      <product id="product"/>
-    </view>
-    <view class="group-buy-button" bindtap="onPay">￥{{product.gprice/100}} 立即团购</view>
-  </view>
-</view>

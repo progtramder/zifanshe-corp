@@ -10,8 +10,6 @@ Page({
     name:  '',
     brief: '',
     price: '',
-    gprice: '', //团购价
-    number: '', //成团人数
     detail: [],
     deletedFiles: [] //对于视频和图片两种类型删除数据库的同时还要删除文件
   },
@@ -40,8 +38,6 @@ Page({
             name: product.name,
             brief: product.brief,
             price: product.price / 100,
-            gprice: product.gprice == '' ? '' : product.gprice / 100,
-            number: product.number,
             detail: product.detail
           })
       })
@@ -71,14 +67,6 @@ Page({
     this.data.price = e.detail.value
   },
 
-  getGroupPrice(e) {
-    this.data.gprice = e.detail.value
-  },
-
-  getNumber(e) {
-    this.data.number = e.detail.value
-  },
-
   getProductName(e) {
     this.data.name = e.detail.value
   },
@@ -92,20 +80,7 @@ Page({
       this.alert("价格金额太小")
       return false
     }
-    if (this.data.gprice != '') {
-      if (this.data.gprice < 0.01) {
-        this.alert("团购价格金额太小")
-        return false
-      }
-      if (Math.floor(this.data.number) != this.data.number) {
-        this.alert("团购人数必须是整数")
-        return false
-      }
-      if(this.data.number == 0) {
-        this.alert("团购人数不能为0")
-        return false
-      }
-    }
+
     return true
   },
 
@@ -176,8 +151,6 @@ Page({
             name: this.data.name,
             brief: this.data.brief,
             price: this.data.price * 100,
-            number: this.data.number,
-            gprice: this.data.gprice == '' ? '' : this.data.gprice * 100,
             detail: this.data.detail
           }
         }

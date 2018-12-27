@@ -21,7 +21,6 @@
     "page/corp/qrcode/index",
     "page/corp/qrcode/product/index",
     "page/corp/admin-enroll/index",
-    "page/corp-product/group-buy/index",
     "components/product/index"
   ],
   "window": {
