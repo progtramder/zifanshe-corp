@@ -24,12 +24,12 @@ Page({
   async showQrCode() {
     try {
       wx.showLoading()
+      let qrFile
       const db = wx.cloud.database();
       const corpId = app.getCorpId()
       const res = await db.collection('qrcode-main').where({
         corp: corpId
       }).get()
-      let qrFile
       if (res.data.length > 0) {
         qrFile = res.data[0].file
       } else {

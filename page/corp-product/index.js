@@ -5,6 +5,7 @@ Page({
     const db = wx.cloud.database();
     db.collection('corp').doc(id).get().then((res) => {
       this.data.corpName = res.data.name
+      wx.setNavigationBarTitle({ title: res.data.name })
     })
     db.collection('product').where({
       owner: id

@@ -5,6 +5,7 @@ App({
     })
   },
   globalData: {
+    openId: null,
     corpId: null,
     corpName: ''
   },
@@ -15,6 +16,13 @@ App({
 
   setCorpId(corpId) {
     this.globalData.corpId = corpId
+  },
+
+  setOpenId(openId) {
+    this.globalData.openId = openId
+  },
+  getOpenId() {
+    return this.globalData.openId
   },
 
   setCorpName(name) {

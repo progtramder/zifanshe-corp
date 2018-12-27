@@ -24,11 +24,11 @@ Page({
     try {
       wx.showLoading()
       const db = wx.cloud.database();
+      let qrFile
       const productId = this.data.product._id
       const res = await db.collection('qrcode-product').where({
         product: productId
       }).get()
-      let qrFile
       if (res.data.length > 0) {
         qrFile = res.data[0].file
       } else {

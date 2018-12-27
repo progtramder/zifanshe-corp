@@ -38,6 +38,7 @@ Page({
         } else {
           config.updateRedDot(this)
         }
+        app.setOpenId(openId)
         app.setCorpId(corpId)
         app.setCorpName(name)
         this.setData({
@@ -75,5 +76,5 @@ Page({
     wx.navigateTo({
       url: `corp-info/index?id=${app.getCorpId()}`
     })
-  }
+  },
 })
