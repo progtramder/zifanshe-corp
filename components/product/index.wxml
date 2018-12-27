@@ -20,4 +20,41 @@
     </block>
   </view>
 </view>
+<view wx:if="{{showUserInfo == true}}" class="user-info-container">
+  <view class="user-info">
+    <view class="input-box">
+      <input
+        class="input"
+        value="{{customer.name}}"
+        placeholder-class="place-holder" 
+        placeholder="您的姓名" 
+        bindinput="getName"
+      />
+    </view>
+    <view class="input-box">
+      <input
+        class="input"
+        type='number'
+        value="{{customer.phone}}"
+        placeholder-class="place-holder" 
+        placeholder="您的手机号" 
+        bindinput="getPhone"
+      />
+    </view>
+    <view class="input-box">
+      <input
+        cursor-spacing="30"
+        class="input"
+        value="{{customer.note}}"
+        placeholder-class="place-holder" 
+        placeholder="备注信息" 
+        bindinput="getNote"
+      />
+    </view>
+    <view class="confirm-box">
+      <view hover-class="navigator-hover" bindtap="confirm" class="confirm">确定</view>
+      <view hover-class="navigator-hover" bindtap="cancel" class="cancel">取消</view>
+    </view>
+  </view>
+</view>
 <wxs src="./index.wxs" module="index" />

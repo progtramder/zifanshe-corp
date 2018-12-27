@@ -1,8 +1,7 @@
+const regeneratorRuntime = require("../../common/runtime")
 const app = getApp()
 Page({
   data: {
-    name: '',
-    phone: ''
   },
   onLoad: function (options) {
     wx.showNavigationBarLoading()
@@ -21,22 +20,68 @@ Page({
     })
   },
 
-  getPhoneNumber(e) {
-    this.data.phone = e.detail.value
-  },
-  getName(e) {
-    this.data.name = e.detail.value
+  async onPay() {
+    this.data.customer = {
+      name: '',
+      phone: '',
+      note: ''
+    }
+    try {
+      wx.showLoading()
+      if (!app.getOpenId()) {
+        const res = await wx.cloud.callFunction({ name: 'login' })
+        const { openId } = res.result
+        app.setOpenId(openId)
+      }
+      const db = wx.cloud.database()
+      const res = await db.collection('customer').where({
+        _openid: app.getOpenId()
+      }).get()
+      if (res.data.length > 0) {
+        const { name, phone, note } = res.data[0]
+        this.data.customer = { name, phone, note }
+      } 
+    } finally {
+      wx.hideLoading()
+    }
+    this.selectComponent("#product").setUserInfo(this.data.customer)
+    this.selectComponent("#product").popUserInfo()
   },
 
-  onPay() {
-    if (this.data.phone == '' || this.data.name == '') {
+  onSubmitOrder() {
+    const customer = this.data.customer
+    if (customer.name == '' || customer.phone == '') {
       wx.showModal({
-        content: '请填写姓名和电话',
+        content: '请留下姓名和电话以便购买成功后我们联系您',
         showCancel: false,
         confirmColor: '#F56C6C'
       })
       return
     }
+    const db = wx.cloud.database()
+    db.collection('customer').where({
+      _openid: app.getOpenId()
+    }).get().then(res => {
+      if (res.data.length == 0) {
+        db.collection('customer').add({
+          data: {
+            name: customer.name,
+            phone: customer.phone,
+            note: customer.note
+          }
+        })
+      } else {
+        const docId = res.data[0]._id
+        db.collection('customer').doc(docId).update({
+          data: {
+            name: customer.name,
+            phone: customer.phone,
+            note: customer.note
+          }
+        })
+      }
+    })
+    
     wx.showLoading({ title: '正在下单' });
     let id = this.data.product._id;
     wx.cloud.callFunction({
@@ -45,18 +90,19 @@ Page({
         type: 'unifiedorder',
         data:
         {
+          customer,
           goodId: id
         }
       }
     }).then(res => {
       wx.hideLoading();
       wx.navigateTo({
-        url: `../pay/index?id=${res.result.data.out_trade_no}&name=${this.data.name}&phone=${this.data.phone}`
+        url: `../pay/index?id=${res.result.data.out_trade_no}`
       })
     }).catch(err => {
       console.log(err)
       wx.hideLoading();
-    });
+    })
   },
 
   onShareAppMessage: function () {

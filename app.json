@@ -47,6 +47,12 @@
         "iconPath": "image/personal.png",
         "selectedIconPath": "image/personal_HL.jpg",
         "text": "企业中心"
+      },
+      {
+        "pagePath": "page/corp-product/index",
+        "iconPath": "image/personal.png",
+        "selectedIconPath": "image/personal_HL.jpg",
+        "text": "企业中心"
       }
     ]
   },

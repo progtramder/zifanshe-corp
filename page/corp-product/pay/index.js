@@ -3,12 +3,10 @@ Page({
     order: {}
   },
 
-  onLoad({ id, name, phone }) {
+  onLoad({ id }) {
     this.setData(
       {
-        out_trade_no: id,
-        name,
-        phone
+        out_trade_no: id
       })
     this.getOrder(id)
   },
@@ -42,10 +40,7 @@ Page({
       data: {
         type: 'finishPay',
         data: {
-          name: this.data.name,
-          phone: this.data.phone,
           out_trade_no: this.data.out_trade_no,
-          product: this.data.order.body
         }
       }
     }).then(res => {
