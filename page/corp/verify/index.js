@@ -71,8 +71,15 @@ Page({
           }
         }
       })
+      await wx.cloud.callFunction({
+        name: 'database',
+        data: {
+          func: 'addaccount',
+          corpId: this.data.corpId
+        }
+      })
       const db = wx.cloud.database()
-      db.collection('corp-admin').add({
+      await db.collection('corp-admin').add({
         data: {
           corp: this.data.corpId,
           admin: this.data.corpAdmin

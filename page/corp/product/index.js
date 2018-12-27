@@ -45,13 +45,23 @@ Page({
   },
 
   clearProduct(deleted) {
-    const files = []
-    files.push(deleted.cover)
-    deleted.detail.forEach(e => {
-      if (e.type != 'text') files.push(e.src)
-    })
-    wx.cloud.deleteFile({
-      fileList: files
+    const db = wx.cloud.database();
+    db.collection('qrcode-product').where({
+      product: deleted._id
+    }).get().then(res => {
+      const files = []
+      if (res.data.length > 0) {
+        const { _id: docId, file } = res.data[0]
+        db.collection('qrcode-product').doc(docId).remove()
+        files.push(file)
+      }
+      files.push(deleted.cover)
+      deleted.detail.forEach(e => {
+        if (e.type != 'text') files.push(e.src)
+      })
+      wx.cloud.deleteFile({
+        fileList: files
+      })
     })
   },
 

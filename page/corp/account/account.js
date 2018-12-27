@@ -22,7 +22,7 @@ Page({
       if (account.length > 0) {
         this.setData(
           {
-            balance: account[0].balance.toFixed(2)
+            balance: Number(account[0].balance).toFixed(2)
           })
       }
     }).catch(err => {
