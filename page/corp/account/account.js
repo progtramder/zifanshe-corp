@@ -13,7 +13,8 @@ Page({
     wx.cloud.callFunction({
       name: 'database',
       data: {
-        action: 'balance',
+        func: 'balance',
+        corpId: app.getCorpId()
       }
     }).then(res => {
       wx.hideNavigationBarLoading()
@@ -27,11 +28,6 @@ Page({
     }).catch(err => {
       wx.hideNavigationBarLoading()
       console.log(err)
-    })
-  },
-  accountDetail() {
-    wx.navigateTo({
-      url: `../account-detail/account-detail`,
     })
   },
 

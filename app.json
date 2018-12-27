@@ -6,7 +6,6 @@
     "page/corp/order/order",
     "page/corp/message/message",
     "page/corp/account/account",
-    "page/corp/account-detail/account-detail",
     "page/corp-product/index",
     "page/corp-product/product-detail/index",
     "page/corp-product/pay/index",
@@ -17,7 +16,13 @@
     "page/corp-requirement/index",
     "page/corp/corp-info/index",
     "page/corp/admin/admin",
-    "page/corp/verify/index"
+    "page/corp/verify/index",
+    "page/corp/corp-admin/index",
+    "page/corp/qrcode/index",
+    "page/corp/qrcode/product/index",
+    "page/corp/admin-enroll/index",
+    "page/corp-product/group-buy/index",
+    "components/product/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -37,12 +42,6 @@
         "iconPath": "image/index.jpg",
         "selectedIconPath": "image/index_HL.jpg",
         "text": "首页"
-      },
-      {
-        "pagePath": "page/corp-product/index",
-        "iconPath": "image/personal.png",
-        "selectedIconPath": "image/personal_HL.jpg",
-        "text": "产品"
       },
       {
         "pagePath": "page/corp/index",

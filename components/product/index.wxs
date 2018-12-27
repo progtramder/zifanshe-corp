@@ -1,0 +1,9 @@
+var transform = function (product) {
+  var price = '￥' + product.price / 100
+  if (product.gprice != '') {
+    price += '（团购价￥' + product.gprice / 100 + '）'
+  }
+  return price
+}
+
+module.exports.transform = transform

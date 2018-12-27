@@ -12,11 +12,11 @@ Page({
   onLoad: function (options) {
     wx.showNavigationBarLoading()
     const db = wx.cloud.database();
-    let openId = app.getOpenId()
-    db.collection('message').doc(openId).get().then((res) => {
+    let corpId = app.getCorpId()
+    db.collection('message').doc(corpId).get().then((res) => {
       wx.hideNavigationBarLoading()
       this.setData({ message : res.data.message })
-      db.collection('message').doc(openId).update({
+      db.collection('message').doc(corpId).update({
         data: {
           unread: false
         },

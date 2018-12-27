@@ -1,0 +1,23 @@
+<view class="cover">
+  <image src="{{product.cover}}"/>
+  <view>{{product.name}}</view>
+</view>
+<view class="product-brief">{{product.brief}}</view>
+<view class="product-price">{{index.transform(product)}}</view>
+<view class="product-container">
+  <view class="product-content">
+    <block wx:for="{{product.detail}}" wx:key="item">
+      <view wx:if="{{item.type=='text'}}" class="product-text">{{item.content}}</view>
+      <image 
+        wx:if="{{item.type=='image'}}" 
+        mode="widthFix" 
+        class="product-image" 
+        src="{{item.src}}"
+      />
+      <view wx:if="{{item.type=='video'}}" class="product-video">
+        <video src="{{item.src}}" controls/>
+      </view>
+    </block>
+  </view>
+</view>
+<wxs src="./index.wxs" module="index" />

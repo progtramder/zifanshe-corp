@@ -24,7 +24,6 @@
           <text>商品</text>
           <text class="text">{{item.body}}</text>
         </view>
-        <view class="delete-button" data-index="{{index}}" catchtap="deleteItem">删除</view>
     </view>
   </view>
   <wxs src="./order.wxs" module="transform" />

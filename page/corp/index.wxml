@@ -47,6 +47,16 @@
           <view class="navigator-text">产品</view>
           <view class="navigator-arrow"></view>
         </navigator>
+        <navigator url="qrcode/index" class="navigator">
+          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+          <view class="navigator-text">二维码</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="corp-admin/index" class="navigator">
+          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+          <view class="navigator-text">管理</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
       </view>
     </view>
     <view wx:if="{{superAdmin}}"class="page-section">

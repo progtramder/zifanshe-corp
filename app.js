@@ -6,6 +6,7 @@ App({
   },
   globalData: {
     corpId: null,
+    corpName: ''
   },
 
   getCorpId() {
@@ -14,5 +15,12 @@ App({
 
   setCorpId(corpId) {
     this.globalData.corpId = corpId
+  },
+
+  setCorpName(name) {
+    this.globalData.corpName = name
+  },
+  getCorpName() {
+    return this.globalData.corpName
   }
 })

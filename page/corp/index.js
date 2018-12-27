@@ -25,7 +25,6 @@ Page({
       }).get()
       if (res.data.length > 0) {
         const { corp: corpId } = res.data[0]
-        app.setCorpId(corpId)
         res = await db.collection('corp').doc(corpId).get()
         const { logo, name } = res.data
         res = await db.collection('super-admin').where({
@@ -39,6 +38,8 @@ Page({
         } else {
           config.updateRedDot(this)
         }
+        app.setCorpId(corpId)
+        app.setCorpName(name)
         this.setData({
           enrolled: true,
           logo: logo,

@@ -33,9 +33,3 @@
   text-align: center;
   border-radius: 10rpx;
 }
-.account-detail {
-  padding-right: 50rpx;
-  text-align: right;
-  background-color: white;
-  font-size: 80rpx;
-}

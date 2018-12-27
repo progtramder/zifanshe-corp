@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="page-body">
+    <view class="corp-info">
+      <image src="{{logo}}"></image>
+      <view>{{name}}</view>
+      <view>邀请你成为企业平台管理成员</view>
+    </view>
+    <button 
+      bindtap="accept"
+    >
+      接受
+    </button>
+  </view>
+</view>

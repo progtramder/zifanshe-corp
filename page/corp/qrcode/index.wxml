@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="page-body">
+    <view wx:for="{{product}}" wx:key="item" class="exhibit-item-wrapper">
+      <exhibit-item url="product/index?id={{item._id}}"
+        imgpath="{{item.cover}}"
+        title="{{item.name}}"
+        body="{{item.brief}}"
+        footer=""
+      />
+    </view>
+    <view class="float-bar" bindtap="showQrCode">为此页生成二维码</view>
+  </view>
+</view>

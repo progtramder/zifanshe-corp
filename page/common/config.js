@@ -4,6 +4,7 @@ module.exports = {
   updateRedDotAdmin: updateRedDotAdmin
 };
 
+var tabIndex = 1
 function hasNewOrder() {
   const db = wx.cloud.database();
   return new Promise((resolve, reject) => {
@@ -51,9 +52,9 @@ function updateRedDot(hostPage) {
       })
     }
     if (res[0] || res[1]) {
-      wx.showTabBarRedDot({index: 2})
+      wx.showTabBarRedDot({ index: tabIndex })
     } else {
-      wx.hideTabBarRedDot({index: 2})
+      wx.hideTabBarRedDot({ index: tabIndex })
     }
   })
 }
@@ -69,9 +70,9 @@ function updateRedDotAdmin(hostPage) {
       })
     }
     if (res[0] || res[1] || res[2]) {
-      wx.showTabBarRedDot({index: 2})
+      wx.showTabBarRedDot({ index: tabIndex })
     } else {
-      wx.hideTabBarRedDot({index: 2})
+      wx.hideTabBarRedDot({ index: tabIndex })
     }
   })
 }

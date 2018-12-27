@@ -3,6 +3,6 @@
     <view style="margin-bottom: 120rpx">
       <product id="product"/>
     </view>
-    <view class="buy-button" bindtap="onPay">￥{{product.price/100}} 立即购买</view>
+    <view class="float-bar" bindtap="showQrCode">为此页生成二维码</view>
   </view>
 </view>

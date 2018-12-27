@@ -10,6 +10,8 @@ Page({
     name:  '',
     brief: '',
     price: '',
+    gprice: '', //团购价
+    number: '', //成团人数
     detail: [],
     deletedFiles: [] //对于视频和图片两种类型删除数据库的同时还要删除文件
   },
@@ -38,6 +40,8 @@ Page({
             name: product.name,
             brief: product.brief,
             price: product.price / 100,
+            gprice: product.gprice == '' ? '' : product.gprice / 100,
+            number: product.number,
             detail: product.detail
           })
       })
@@ -64,26 +68,49 @@ Page({
   },
 
   getProductPrice(e) {
-    if (e.detail.value == '') {
-      return
-    }
-    if (e.detail.value < 0.01) {
-      this.alert("金额太小")
-      this.setData({
-        price: ''
-      })
-      return
-    }
     this.data.price = e.detail.value
+  },
+
+  getGroupPrice(e) {
+    this.data.gprice = e.detail.value
+  },
+
+  getNumber(e) {
+    this.data.number = e.detail.value
   },
 
   getProductName(e) {
     this.data.name = e.detail.value
   },
 
-  async onFinish() {
+  check() {
     if (this.data.name == '' || this.data.price == '' || this.data.cover == '') {
       this.alert('请完整填写内容')
+      return false
+    }
+    if (this.data.price < 0.01) {
+      this.alert("价格金额太小")
+      return false
+    }
+    if (this.data.gprice != '') {
+      if (this.data.gprice < 0.01) {
+        this.alert("团购价格金额太小")
+        return false
+      }
+      if (Math.floor(this.data.number) != this.data.number) {
+        this.alert("团购人数必须是整数")
+        return false
+      }
+      if(this.data.number == 0) {
+        this.alert("团购人数不能为0")
+        return false
+      }
+    }
+    return true
+  },
+
+  async onFinish() {
+    if (!this.check()) {
       return
     }
 
@@ -149,6 +176,8 @@ Page({
             name: this.data.name,
             brief: this.data.brief,
             price: this.data.price * 100,
+            number: this.data.number,
+            gprice: this.data.gprice == '' ? '' : this.data.gprice * 100,
             detail: this.data.detail
           }
         }

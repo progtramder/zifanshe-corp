@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="page-body">
+    <button 
+      open-type="share"
+    >
+      添加企业平台管理成员
+    </button>
+  </view>
+</view>

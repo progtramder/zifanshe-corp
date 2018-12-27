@@ -10,7 +10,15 @@
     </view>
     <view class="product-info-item">
       <view>价格￥</view>
-      <input type="digit" value="{{price}}" bindblur="getProductPrice" placeholder-class="placeholder" placeholder="产品价格"></input>
+      <input type="digit" value="{{price}}" bindinput="getProductPrice" placeholder-class="placeholder" placeholder="产品价格"></input>
+    </view>
+    <view class="product-info-item">
+      <view>团购价￥</view>
+      <input type="digit" value="{{gprice}}" bindinput="getGroupPrice" placeholder-class="placeholder" placeholder="团购价格"></input>
+    </view>
+    <view class="product-info-item">
+      <view>成团人数</view>
+      <input type="digit" value="{{number}}" bindinput="getNumber" placeholder-class="placeholder" placeholder="成团人数"></input>
     </view>
     <view class="product-info-item">
       <textarea auto-height="true" value="{{brief}}" bindinput="getProductBrief" placeholder-class="placeholder" placeholder="产品简介"></textarea>

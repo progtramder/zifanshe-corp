@@ -16,6 +16,8 @@ Page({
       {
         product: res.data
       })
+    }).catch(err => {
+      wx.hideNavigationBarLoading()
     })
   },
 

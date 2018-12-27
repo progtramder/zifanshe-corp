@@ -9,6 +9,7 @@
   background-color: #0084FF;
   color: white;
 }
+
 .corp-info {
   display:flex;
   height: 180rpx;

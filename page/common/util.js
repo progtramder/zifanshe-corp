@@ -48,5 +48,5 @@ module.exports = {
   formatTime,
   formatLocation,
   randomString,
-  randomCode
+  randomCode,
 }

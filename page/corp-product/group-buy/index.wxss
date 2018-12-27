@@ -1,4 +1,4 @@
-.buy-button {
+.group-buy-button {
   background-color: #F56C6C;
   color: white;
   position: fixed;
