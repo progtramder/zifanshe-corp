@@ -34,7 +34,8 @@ Page({
       const { openId } = res.result
       const db = wx.cloud.database()
       res = await db.collection('corp-admin').where({
-        admin: openId
+        admin: openId,
+        corp: this.data.corpId
       }).get()
       if (res.data.length == 0) {
         await db.collection('corp-admin').add({

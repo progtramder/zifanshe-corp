@@ -47,6 +47,9 @@ Component({
     },
     confirm() {
       this.triggerEvent("submit");
+      this.setData({
+        showUserInfo: false
+      })
     },
     cancel() {
       this.setData({

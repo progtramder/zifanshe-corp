@@ -10,3 +10,7 @@ button {
   background-color: #F56C6C;
   color: white;
 }
+
+.hover {
+  background-color: #DEDEDE
+}

@@ -47,13 +47,6 @@ Page({
           corp: name
         })
       } else {
-        res = await db.collection('corp').where({
-          _openid: openId
-        }).get()
-        if (res.data.length > 0) {
-          const { _id: corpId } = res.data[0]
-          app.setCorpId(corpId)
-        }
         this.setData({
           enrolled: false
         })

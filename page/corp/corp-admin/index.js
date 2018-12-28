@@ -36,6 +36,7 @@ Page({
       }).get()
       const { _id: docId } = res.data[0]
       await db.collection('corp-admin').doc(docId).remove()
+      app.setCorpId(null)
       wx.reLaunch({
         url: '../index',
       })

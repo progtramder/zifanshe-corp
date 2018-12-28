@@ -63,6 +63,7 @@ Page({
       wx.showLoading()
       const db = wx.cloud.database()
       let corpId = this.data.corpId
+      const newApply = corpId ? false : true
       if (!corpId) {
         const res = await db.collection('corp').add({
           data: {
@@ -112,7 +113,7 @@ Page({
         }
       })
 
-      this.alert('上传成功')
+      newApply ? this.alert('提交成功，请耐心等待审核通过') : this.alert('保存成功')
     } catch (err) {
       this.alert('请检查网络')
       console.log(err)

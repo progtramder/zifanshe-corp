@@ -1,3 +1,6 @@
+.hide {
+  display: none;
+}
 .cover {
   width: 100%;
   background-color: white;
@@ -73,7 +76,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: f0f0f0;
   opacity: 1;
   z-index: 1000;
 }
@@ -134,5 +137,5 @@
 }
 
 .navigator-hover {
-  background-color: #f0f0f0;
+  opacity: 0.3;
 }
