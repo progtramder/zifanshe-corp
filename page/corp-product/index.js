@@ -1,25 +1,25 @@
+const regeneratorRuntime = require("../common/runtime")
 Page({
-  onLoad({id}) {
+  async onLoad({id}) {
     this.data.corpId = id
     wx.showNavigationBarLoading()
-    const db = wx.cloud.database();
-    db.collection('corp').doc(id).get().then((res) => {
+    try {
+      const db = wx.cloud.database();
+      let res = await db.collection('corp').doc(id).get()
       this.data.corpName = res.data.name
       wx.setNavigationBarTitle({ title: res.data.name })
-    })
-    db.collection('product').where({
-      owner: id
-    }).field({
-      detail: false
-    }).get().then((res) => {
-      wx.hideNavigationBarLoading()
-      this.setData(
-      {
+
+      res = await db.collection('product').where({
+        owner: id
+      }).field({
+        detail: false
+      }).get()
+      this.setData({
         product: res.data
       })
-    }).catch(err => {
+    } finally {
       wx.hideNavigationBarLoading()
-    })
+    }
   },
 
   onShareAppMessage() {

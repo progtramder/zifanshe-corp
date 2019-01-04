@@ -52,7 +52,7 @@ Page({
 
   async onReachBottom() {
     try {
-      wx.showNavigationBarLoading()
+      wx.showLoading()
       const db = wx.cloud.database();
       const res = await db.collection('requirement').skip(
         this.data.requirement.length
@@ -65,7 +65,7 @@ Page({
           requirement
         })
     } finally {
-      wx.hideNavigationBarLoading()
+      wx.hideLoading()
     }
   },
 

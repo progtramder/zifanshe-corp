@@ -35,7 +35,7 @@ Page({
     wx.showModal({
       content: '暂时还不支持',
       showCancel: false,
-      confirmColor: '#f9c607'
+      confirmColor: '#F56C6C'
     })
   }
 })

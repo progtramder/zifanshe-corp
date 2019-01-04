@@ -12,8 +12,7 @@ Page({
       detail: false
     }).get().then((res) => {
       wx.hideNavigationBarLoading()
-      this.setData(
-      {
+      this.setData({
         product: res.data
       })
     }).catch(err => {

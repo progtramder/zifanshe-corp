@@ -8,6 +8,6 @@
         footer=""
       />
     </view>
-    <view class="float-bar" bindtap="showQrCode">为此页生成二维码</view>
+    <view class="float-bar" bindtap="showQrCode">为产品主页生成二维码</view>
   </view>
 </view>

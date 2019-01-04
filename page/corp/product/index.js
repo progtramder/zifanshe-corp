@@ -1,3 +1,4 @@
+const regeneratorRuntime = require("../../common/runtime")
 const app = getApp()
 Page({
 
@@ -13,35 +14,39 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    wx.showNavigationBarLoading()
-    const db = wx.cloud.database();
-    db.collection('product').where({
-      owner: app.getCorpId()
-    }).limit(10).get().then((res) => {
+  async onShow() {
+    try {
+      wx.showNavigationBarLoading()
+      const db = wx.cloud.database();
+      const res  = await db.collection('product').where({
+        owner: app.getCorpId()
+      }).limit(10).get()
+      this.setData({
+        product: res.data,
+        isEmpty: res.data.length == 0
+      })
+    } finally {
       wx.hideNavigationBarLoading()
-      this.setData(
-        {
-          product: res.data,
-          isEmpty: res.data.length == 0
-        })
-    })
+    }
   },
 
-  onReachBottom() {
-    const db = wx.cloud.database();
-    db.collection('product').where({
-      owner: app.getCorpId()
-    }).skip(
-      this.data.product.length
-    ).limit(10).get().then((res) => {
+  async onReachBottom() {
+    try {
+      wx.showLoading()
+      const db = wx.cloud.database();
+      const res = await db.collection('product').where({
+        owner: app.getCorpId()
+      }).skip(
+        this.data.product.length
+      ).limit(10).get()
       let product = this.data.product
       product.push(...res.data)
-      this.setData(
-        {
-          product
-        })
-    })
+      this.setData({
+        product
+      })
+    } finally {
+      wx.hideLoading()
+    }
   },
 
   clearProduct(deleted) {

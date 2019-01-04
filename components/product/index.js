@@ -45,16 +45,16 @@ Component({
         showUserInfo: true
       })
     },
-    confirm() {
-      this.triggerEvent("submit");
+    hideUserInfo() {
       this.setData({
         showUserInfo: false
       })
     },
+    confirm() {
+      this.triggerEvent("submit");
+    },
     cancel() {
-      this.setData({
-        showUserInfo: false
-      })
+      this.hideUserInfo()
     }
   }
 })

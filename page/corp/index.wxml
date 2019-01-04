@@ -53,7 +53,7 @@
           <view class="navigator-arrow"></view>
         </navigator>
         <navigator url="corp-admin/index" class="navigator">
-          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+          <image class="navigator-img-front" src="/image/personal_HL.jpg"></image>
           <view class="navigator-text">管理</view>
           <view class="navigator-arrow"></view>
         </navigator>

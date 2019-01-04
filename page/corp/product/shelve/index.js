@@ -32,14 +32,13 @@ Page({
         wx.hideNavigationBarLoading()
         let product = res.data[0]
         this.selectComponent("#rich_editor").init(product.detail)
-        this.setData(
-          {
-            cover: product.cover,
-            name: product.name,
-            brief: product.brief,
-            price: product.price / 100,
-            detail: product.detail
-          })
+        this.setData({
+          cover: product.cover,
+          name: product.name,
+          brief: product.brief,
+          price: product.price / 100,
+          detail: product.detail
+        })
       })
     }
 

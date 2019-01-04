@@ -17,6 +17,9 @@ Page({
         {
           product,
         })
+    }).catch(err => {
+      wx.hideNavigationBarLoading()
+      console.log(err)
     })
   },
 
@@ -99,6 +102,8 @@ Page({
       wx.navigateTo({
         url: `../pay/index?id=${res.result.data.out_trade_no}`
       })
+      this.selectComponent("#product").hideUserInfo()
+      
     }).catch(err => {
       console.log(err)
       wx.hideLoading();
