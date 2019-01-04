@@ -69,10 +69,11 @@ Page({
         }
       })
       await this.getOrder(out_trade_no)
+      wx.hideLoading()
       wx.showToast({
         title: '订单已取消'
       })
-    } finally {
+    } catch(err) {
       wx.hideLoading()
     }
   },

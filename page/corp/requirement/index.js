@@ -20,27 +20,33 @@ Page({
       owner: app.getCorpId()
     }).limit(10).get().then((res) => {
       wx.hideNavigationBarLoading()
-      this.setData(
-        {
-          requirement: res.data,
-          isEmpty: res.data.length == 0
-        })
+      this.setData({
+        requirement: res.data,
+        isEmpty: res.data.length == 0
+      })
+    }).catch(err => {
+      wx.hideNavigationBarLoading()
+      console.log(err)
     })
   },
 
   onReachBottom() {
+    wx.showLoading()
     const db = wx.cloud.database();
     db.collection('requirement').where({
       owner: app.getCorpId()
     }).skip(
       this.data.requirement.length
     ).limit(10).get().then((res) => {
+      wx.hideLoading()
       let requirement = this.data.requirement
       requirement.push(...res.data)
-      this.setData(
-        {
-          requirement
-        })
+      this.setData({
+        requirement
+      })
+    }).catch(err => {
+      wx.hideLoading()
+      console.log(err)
     })
   },
 

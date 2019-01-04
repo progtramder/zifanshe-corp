@@ -13,10 +13,9 @@ Page({
       let product = res.data[0]
       wx.setNavigationBarTitle({ title: product.name })
       this.selectComponent("#product").init(product)
-      this.setData(
-        {
-          product,
-        })
+      this.setData({
+        product,
+      })
     }).catch(err => {
       wx.hideNavigationBarLoading()
       console.log(err)

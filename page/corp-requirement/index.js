@@ -10,10 +10,12 @@ Page({
       wx.hideNavigationBarLoading()
       let requirement = res.data[0]
       wx.setNavigationBarTitle({ title: requirement.name })
-      this.setData(
-        {
-          requirement,
-        })
+      this.setData({
+        requirement,
+      })
+    }).catch(err => {
+      wx.hideNavigationBarLoading()
+      console.log(err)
     })
   },
 
