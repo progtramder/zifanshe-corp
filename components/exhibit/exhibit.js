@@ -23,6 +23,10 @@ Component({
     footer: {
       type: String,
       value: ''
+    },
+    imgshape: {
+      type: String,
+      value: 'rect'
     }
   },
 

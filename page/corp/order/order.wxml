@@ -2,7 +2,7 @@
 <block wx:if="{{isEmpty}}">
   <template is="empty" data="{{content: '空空如也～'}}"/>
 </block>
-<view class="container">
+<view wx:else class="container">
   <view class="page-body">
     <view
       class="{{transform.convert(item.deleting)}}"

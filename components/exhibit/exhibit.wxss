@@ -4,12 +4,19 @@
   flex-direction: row;
   background-color: white
 }
-.exhibit-item image {
+.rect-image {
   display: inline-block;
   height: 250rpx;
   width: 330rpx;
   flex: none;
   border-radius: 10rpx;
+}
+.circle-image {
+  display: inline-block;
+  height: 250rpx;
+  width: 250rpx;
+  flex: none;
+  border-radius: 50%;
 }
 .exhibit-item > view {
   display: inline-block;

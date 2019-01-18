@@ -1,5 +1,5 @@
 <navigator url="{{url}}" class="exhibit-item">
-  <image src="{{imgpath}}"></image>
+  <image class="{{imgshape=='circle'?'circle-image':'rect-image'}}" src="{{imgpath}}"></image>
   <view> 
     <view class="exhibit-item-title">{{title}}</view>
     <view class="exhibit-item-body">{{body}}</view>

@@ -18,6 +18,7 @@
           auto-height="true"
           cursor-spacing="50"
           data-index="{{index}}"
+          maxlength='-1'
           bindinput="onTextInput">
         </textarea>
       </block>
