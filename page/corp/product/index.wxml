@@ -19,5 +19,5 @@
   </view>
 </view>
 <view class="float-bar">
-  <view bindtap="shelve" class="bar-item">产品上架</view>
+  <view bindtap="shelve" class="bar-item">产品发布</view>
 </view>

@@ -1,7 +1,8 @@
 App({
   onLaunch(opts) {
     wx.cloud.init({
-      env: 'zifan-cloud-d1993c'
+      env: 'zifan-cloud-d1993c',
+      traceUser: true,
     })
   },
   globalData: {

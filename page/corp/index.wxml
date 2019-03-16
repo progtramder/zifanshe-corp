@@ -16,20 +16,30 @@
     </view>
     <view class="page-section">
       <view class="navigator-box">
+        <navigator url="product/index" class="navigator">
+          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+          <view class="navigator-text">产品发布</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="requirement/index" class="navigator">
+          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
+          <view class="navigator-text">需求发布</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
         <navigator url="account/account?openId={{openId}}" class="navigator">
             <image class="navigator-img-front" src="/image/account.jpg"></image>
-            <view class="navigator-text">账户</view>
+            <view class="navigator-text">账户信息</view>
             <view class="navigator-arrow"></view>
           </navigator>
         <navigator url="order/order" class="navigator">
           <image class="navigator-img-front" src="/image/order.jpg"></image>
-          <view class="navigator-text">订单</view>
+          <view class="navigator-text">订单管理</view>
           <view wx:if="{{newOrder}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>
         <navigator url="message/message" class="navigator">
           <image class="navigator-img-front" src="/image/message.jpg"></image>
-          <view class="navigator-text">消息</view>
+          <view class="navigator-text">系统消息</view>
           <view wx:if="{{newMessage}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>
@@ -37,16 +47,25 @@
     </view>
     <view class="page-section">
       <view class="navigator-box">
-        <navigator url="requirement/index" class="navigator">
+        <navigator url="" class="navigator">
           <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
-          <view class="navigator-text">需求</view>
+          <view class="navigator-text">管理工具</view>
           <view class="navigator-arrow"></view>
         </navigator>
-        <navigator url="product/index" class="navigator">
-          <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
-          <view class="navigator-text">产品</view>
+        <navigator url="" class="navigator">
+          <image class="navigator-img-front" src="/image/personal_HL.jpg"></image>
+          <view class="navigator-text">子繁智铺</view>
           <view class="navigator-arrow"></view>
         </navigator>
+        <navigator url="" class="navigator">
+          <image class="navigator-img-front" src="/image/personal_HL.jpg"></image>
+          <view class="navigator-text">联系子繁</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="navigator-box">
         <navigator url="qrcode/index" class="navigator">
           <image class="navigator-img-front" src="/image/product_HL.jpg"></image>
           <view class="navigator-text">二维码</view>
@@ -54,7 +73,7 @@
         </navigator>
         <navigator url="corp-admin/index" class="navigator">
           <image class="navigator-img-front" src="/image/personal_HL.jpg"></image>
-          <view class="navigator-text">管理</view>
+          <view class="navigator-text">平台管理</view>
           <view class="navigator-arrow"></view>
         </navigator>
       </view>
