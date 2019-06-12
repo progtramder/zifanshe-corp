@@ -408,7 +408,6 @@ Page({
           }
         })
         //更新评估人总数
-        
         await wx.cloud.callFunction({
           name: 'database',
           data: {
@@ -425,7 +424,16 @@ Page({
         })
       }
 
-      alert('提交成功')
+      wx.showModal({
+        content: '提交成功',
+        showCancel: false,
+        confirmColor: '#F56C6C',
+        success: (res) => {
+          wx.switchTab({
+            url: '/page/corp/index',
+          })
+        }
+      })
     } catch(err) {
       alert('网络异常')
       console.log(err)
