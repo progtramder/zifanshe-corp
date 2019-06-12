@@ -1,0 +1,37 @@
+.eval-item-wrapper {
+  background-color: white;
+  margin-top: 5rpx;
+  padding: 20rpx;
+}
+
+.factor {
+  font-weight: bold;
+  font-size: 35rpx;
+  color: purple;
+}
+.definition {
+  color: gray;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
+
+.eval-sub-item-wrapper {
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+}
+
+.sub-item-desc {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.radio {
+  margin: 10rpx 10rpx 10rpx 0;
+  font-size: 26rpx;
+  color: grey;
+  display: flex;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}

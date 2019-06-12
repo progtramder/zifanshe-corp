@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="page-body">
+    <view wx:for="{{evalModel}}" wx:for-index="index1" wx:key="item" class="eval-item-wrapper">
+      <view class="factor">{{item.factor}}</view>
+      <view class="definition">{{item.definition}}</view>
+      <view wx:for="{{item.subItem}}" wx:for-index="index2" wx:key="item" class="eval-sub-item-wrapper">
+        <view class="sub-item-desc">{{item.desc}}:</view>
+        <radio-group data-index="{{index1}}-{{index2}}" class="radio-group" bindchange="radioChange">
+          <view class="radio" wx:for="{{item.standard}}" wx:for-index="index3" wx:key="item">
+            <radio color="#0084FF" value="{{index3}}"/>
+            <view>{{item.evaluation}}</view>
+          </view>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height:120rpx;"/>
+<view class="float-bar">
+  <view bindtap="submitEval" class="bar-item">提交</view>
+</view>

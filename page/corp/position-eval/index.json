@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "岗位价值评估",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit-eval/index"
+  }
+}

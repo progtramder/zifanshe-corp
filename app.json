@@ -21,7 +21,16 @@
     "page/corp/qrcode/index",
     "page/corp/qrcode/product/index",
     "page/corp/admin-enroll/index",
-    "components/product/index"
+    "components/product/index",
+    "page/corp/position-eval/index",
+    "page/corp/contact/index",
+    "components/exhibit-eval/index",
+    "page/corp/position-eval/corp-eval/index",
+    "page/corp/position-eval/eval/index",
+    "page/corp/position-eval/create-corp/index",
+    "page/corp/position-eval/position/index",
+    "page/corp/position-eval/eval-detail/index",
+    "page/corp/position-eval/eval-report/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -34,7 +43,7 @@
     "color": "#7A7E83",
     "selectedColor": "#000000",
     "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#fbfbfb",
     "list": [
       {
         "pagePath": "page/main/index",
@@ -56,5 +65,6 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
-  "debug": false
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
 }

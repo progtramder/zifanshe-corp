@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="page-body">
+    <view wx:for="{{positions}}" wx:for-index="index" wx:key="item" class="corps-item-wrap">
+      <exhibit-item url="../eval-detail/index?corp={{docId}}&position={{item._id}}"
+        data-index="{{index}}"
+        id="item{{index}}"
+        imgpath="/image/position.png"
+        title="{{item.name}}"
+        body1="当前评估人数：{{item.evalCount}}"
+      />
+      <view data-index="{{index}}" bindtap="onShare" class="forward">...</view>
+    </view>
+  </view>
+</view>
+<view class="float-bar">
+  <view bindtap="createPosition" class="bar-item">新建岗位</view>
+</view>
+<view bindtap="createReport" class="report">生成报告</view>
+
+<view bindtap="closeModal" wx:if="{{showModal}}" class="modal"></view>
+<view class="popup {{showModal?'popup-show':''}}">
+  <button style="color:#0084FF;" open-type="share">邀请评估</button>
+  <view class="seperator"></view>
+  <button bindtap="closeModal">取消</button>
+</view>

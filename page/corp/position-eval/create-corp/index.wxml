@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="page-body">
+  <view class="corp-info">
+    <view class="seperator"></view>
+    <view class="corp-info-item">
+      <input value="{{corpName}}" bindinput="getCorpName" placeholder="企业名称" />
+    </view>
+    <view class="seperator"></view>
+    <view class="corp-info-item">
+      <picker bindchange="gdpChange" range="{{gdp}}">
+        <view class="picker {{corpGDP==''?'unselected':''}}">
+          {{corpGDP==''?'产值规模':corpGDP}}
+        </view>
+      </picker>
+    </view>
+    <view class="seperator"></view>
+    <view class="corp-info-item">
+      <picker bindchange="personnelChange" range="{{personnel}}">
+        <view class="picker {{corpPersonnel==''?'unselected':''}}">
+          {{corpPersonnel==''?'人员规模':corpPersonnel}}
+        </view>
+      </picker>
+    </view>
+    <view class="seperator"></view>
+    <button bindtap="createCorp" class="default-button">创建</button>
+  </view>
+  </view>
+</view>

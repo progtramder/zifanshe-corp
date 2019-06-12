@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="page-body">
+    <view wx:for="{{corps}}" wx:for-index="index" wx:key="item" class="corps-item-wrap">
+      <exhibit-item url="corp-eval/index?id={{item._id}}&corp={{item.corpName}}"
+        data-index="{{index}}"
+        id="item{{index}}"
+        imgpath="/image/corp.png"
+        title="{{item.corpName}}"
+        body1="产值规模：{{item.corpGDP}}"
+        body2="人员规模：{{item.corpPersonnel}}"
+      />
+    </view>
+  </view>
+</view>
+<view class="float-bar">
+  <view bindtap="createCorp" class="bar-item">新建企业</view>
+</view>

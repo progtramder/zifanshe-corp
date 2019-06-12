@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="page-body">
+  <view class="position-info">
+    <view class="seperator"></view>
+    <view class="position-info-item">
+      <input auto-focus="true" bindinput="getPositionName" placeholder="岗位名称" />
+    </view>
+    <view class="seperator"></view>
+    <button bindtap="createPosition" class="default-button">创建</button>
+  </view>
+  </view>
+</view>

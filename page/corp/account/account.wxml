@@ -1,7 +1,7 @@
 <view class="container">
   <view class="page-body">
     <view class="balance-section">
-      <image src='/image/balance.jpeg'>￥</image>
+      <image src='/image/balance.png'>￥</image>
       <text>账户余额</text>
       <text class='balance'>￥ {{balance}}</text>
       <button type="default" class="button" bindtap="withdraw">提现</button>

@@ -3,6 +3,6 @@
     <view style="margin-bottom: 120rpx">
       <product id="product"/>
     </view>
-    <view class="float-bar" bindtap="showQrCode">为此产品生成二维码</view>
+    <view class="float-bar" bindtap="showQrCode">为此产品生成小程序码</view>
   </view>
 </view>
