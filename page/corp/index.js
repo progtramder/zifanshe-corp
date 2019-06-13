@@ -1,7 +1,9 @@
+const { TabPage } = require('../common/common')
 const config = require('../common/config')
 const regeneratorRuntime = require("../common/runtime");
 const app = getApp()
-Page({
+
+TabPage({
   data: {
     enrolled: null,
     logo: '',

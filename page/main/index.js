@@ -1,7 +1,9 @@
+const { TabPage } = require('../common/common')
 const config = require('../common/config')
 const regeneratorRuntime = require("../common/runtime")
 const app = getApp()
-Page({
+
+TabPage({
   onShareAppMessage() {
     return {
       title: '首页',
@@ -25,8 +27,15 @@ Page({
     }
   },
 
-  onLoad() {
-    this.getBulletins()
+  async onLoad() {
+    try {
+      wx.showNavigationBarLoading()
+      const db = wx.cloud.database();
+      const res = await db.collection('UI').doc('mainpage').get()
+      this.setData({ bulletins: res.data.bulletins })
+    } finally {
+      wx.hideNavigationBarLoading()
+    }
   },
 
   onShow() {
@@ -38,13 +47,12 @@ Page({
       wx.showNavigationBarLoading()
       const db = wx.cloud.database();
       const res = await db.collection('requirement').limit(10).field({ 
-          detail: false 
-        }).get()
+        detail: false 
+      }).get()
 
-      this.setData(
-        {
-          requirement: res.data,
-        })
+      this.setData({
+        requirement: res.data,
+      })
     } finally {
       wx.hideNavigationBarLoading()
     }
@@ -67,12 +75,5 @@ Page({
     } finally {
       wx.hideLoading()
     }
-  },
-
-  getBulletins() {
-    const db = wx.cloud.database();
-    db.collection('UI').doc('mainpage').get().then((res) => {
-      this.setData({ bulletins : res.data.bulletins })
-    });
   },
 })
