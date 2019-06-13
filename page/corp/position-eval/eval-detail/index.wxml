@@ -1,12 +1,20 @@
 <view class="container">
   <view class="page-body">
+    <view class="weui-form-preview">
+    <view class="weui-form-preview__bd">
+    <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label preview-head">总分</view>
+          <view class="weui-form-preview__value preview-head">{{totalScore}}</view>
+        </view>
+    </view>
+    </view>
     <view wx:for="{{evals}}" wx:for-index="index" wx:key="item" class="weui-form-preview">
       <view class="weui-form-preview__bd">
-            <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label preview-head">{{item.dimension}}</view>
-                <view class="weui-form-preview__value preview-head">{{item.score}}</view>
-            </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">{{item.dimension}}</view>
+          <view class="weui-form-preview__value">{{item.score}}</view>
         </view>
+      </view>
     </view>
   </view>
 </view>

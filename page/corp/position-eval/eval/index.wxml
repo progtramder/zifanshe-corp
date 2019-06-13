@@ -19,3 +19,23 @@
 <view class="float-bar">
   <view bindtap="submitEval" class="bar-item">提交</view>
 </view>
+
+<view wx:if="{{showModal}}" class="mask"></view>
+<view wx:if="{{showModal}}" class="popup">
+  <view class="seperator"></view>
+  <view class="seperator"></view>
+  <view class="evaluator-info-item">
+    <input value="{{evaluatorName}}" bindinput="getEvaluatorName" placeholder="评估人姓名" />
+  </view>
+  <view class="seperator"></view>
+  <view class="evaluator-info-item">
+    <picker bindchange="roleChange" range="{{role}}" range-key="name">
+      <view class="picker {{evaluatorRole==''?'unselected':''}}">
+        {{evaluatorRole==''?'评估人角色':evaluatorRole}}
+      </view>
+    </picker>
+  </view>
+  <view class="seperator"></view>
+  <button class="default-button" bindtap="closeModal">确定</button>
+  <view class="seperator"></view>
+</view>

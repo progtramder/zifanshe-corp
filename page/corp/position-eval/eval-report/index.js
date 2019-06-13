@@ -18,6 +18,9 @@ Page({
 
   viewDocument() {
     const file = this.data.file
+    wx.showLoading({
+      title: '正在下载文件',
+    })
     wx.cloud.downloadFile({
       fileID: file,
       success: function (res) {
@@ -27,6 +30,9 @@ Page({
       },
       fail: function (res) {
         console.log(res);
+      },
+      complete: function() {
+        wx.hideLoading()
       }
     })
   },

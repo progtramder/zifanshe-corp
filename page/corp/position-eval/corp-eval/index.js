@@ -1,4 +1,5 @@
 const regeneratorRuntime = require("../../../common/runtime")
+const { formatEvaluation } = require("../../../common/common")
 const app = getApp()
 Page({
 
@@ -101,7 +102,7 @@ Page({
         }).get()
         evaluations.push({
           position: positions[i].name,
-          evaluation: this.getMeanEvaluation(res.data)
+          evaluation: formatEvaluation(res.data, this.data.coefficient)
         })
       }
 
@@ -109,6 +110,7 @@ Page({
         name: 'evaluation',
         data: {
           cloudPath: `eval-report/${this.data.docId}.xlsx`,
+          coefficient: this.data.coefficient,
           evaluations
         }
       })
@@ -120,23 +122,4 @@ Page({
       wx.hideLoading()
     }
   },
-  
-  getMeanEvaluation(evals) {
-    const results = []
-    if (evals.length > 0) {
-      const evalCounts = evals.length
-      const dimensions = evals[0].result.length
-      for (let i = 0; i < dimensions; i++) {
-        let sum = 0
-        evals.forEach(e => {
-          sum += e.result[i].score
-        })
-        results.push({
-          dimension: evals[0].result[i].dimension,
-          score: (sum * this.data.coefficient / evalCounts).toFixed(0)
-        })
-      }
-    }
-    return results
-  }
 })

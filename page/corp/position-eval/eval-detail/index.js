@@ -1,4 +1,5 @@
 const regeneratorRuntime = require("../../../common/runtime")
+const { formatEvaluation } = require("../../../common/common")
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
       wx.showNavigationBarLoading()
       const db = wx.cloud.database();
       let res = await db.collection('eval-corp').doc(options.corp).get()
-      this.data.coefficient = res.data.coefficient
+      const coefficient = res.data.coefficient
       res = await db.collection('eval-positions').doc(options.position).get()
       const position = res.data
       res = await db.collection('evaluation').where({
@@ -23,30 +24,13 @@ Page({
         position: position._id
       }).get()
       
+      const evaluation = formatEvaluation(res.data, coefficient)
       this.setData({
-        evals: this.getMeanEvaluation(res.data)
+        evals: evaluation.mean,
+        totalScore: evaluation.total
       })
     } finally {
       wx.hideNavigationBarLoading()
     }
   },
-
-  getMeanEvaluation(evals) {
-    const results = []
-    if (evals.length > 0) {
-      const evalCounts = evals.length
-      const dimensions = evals[0].result.length
-      for (let i = 0; i < dimensions; i++) {
-        let sum = 0
-        evals.forEach(e => {
-          sum += e.result[i].score
-        })
-        results.push({
-          dimension: evals[0].result[i].dimension,
-          score: (sum * this.data.coefficient / evalCounts).toFixed(0)
-        })
-      }
-    }
-    return results
-  }
 })

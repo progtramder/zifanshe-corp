@@ -66,10 +66,13 @@
   background-color: purple;
   color: white;
   line-height: 120rpx;
-  bottom: 150rpx;
+  bottom: 220rpx;
   right: 20rpx;
   font-size: 22rpx;
   border-radius: 50%;
   text-align: center;
+  border-color: gray;
+  border-style: solid;
+  border-width: 4rpx;
   opacity: 0.6
 }

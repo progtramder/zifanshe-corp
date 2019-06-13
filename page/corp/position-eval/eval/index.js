@@ -346,6 +346,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    role: [
+      { name: '岗位直接主管', weight: 0.5},
+      { name: '公司分管领导', weight: 0.15 },
+      { name: 'HR负责人', weight: 0.25 },
+      { name: '外部专家顾问', weight: 0.1 },
+    ],
 
   },
 
@@ -358,6 +364,15 @@ Page({
       //获取评估人的openId
       let res = await wx.cloud.callFunction({ name: 'login' })
       const { openId } = res.result
+
+      //检查是否已经评估过
+      const db = wx.cloud.database();
+      res = await db.collection('evaluation').where({
+        corp: options.corp,
+        position: options.position,
+        _openid: openId
+      }).count()
+      const fresh = res.total == 0 ? true : false
       const result = []
       model.forEach(e1 => {
         e1.subItem.forEach(e2 => {
@@ -366,7 +381,10 @@ Page({
       })
 
       this.setData({
-        evalPerson: openId,
+        fresh,
+        showModal: fresh,
+        evaluatorName: '',
+        evaluatorRole: '',
         corp: options.corp, //评估企业的id
         position: options.position, //待评估岗位的id
         evalModel: model,
@@ -375,9 +393,23 @@ Page({
       wx.setNavigationBarTitle({
         title: options.title || '岗位评估',
       })
+
+      //处理因为网络问题引起的问题
+      this.exception = {status: false}
+    } catch(err) {
+      //异常发生后需要重新加载页面，所以保存好options
+      this.exception = {status: true, data: options}
+      alert('网络异常，请下拉页面重新加载')
     } finally {
       wx.hideNavigationBarLoading()
     }
+  },
+
+  async onPullDownRefresh() {
+    if (this.exception.status) {
+      await this.onLoad(this.exception.data)
+    }
+    wx.stopPullDownRefresh()
   },
 
   async submitEval() {
@@ -392,18 +424,15 @@ Page({
     try {
       wx.showLoading()
       const db = wx.cloud.database();
-      const res = await db.collection('evaluation').where({
-        corp: this.data.corp,
-        position: this.data.position,
-        author: this.data.evalPerson
-      }).get()
-      if (res.data.length == 0) {
-        //添加字段
+      if (this.data.fresh) {
+        //如果没有评估过则添加字段
         await db.collection('evaluation').add({
           data: {
             corp: this.data.corp,
             position: this.data.position,
-            author: this.data.evalPerson,
+            evaluatorName: this.data.evaluatorName,
+            evaluatorRole: this.data.evaluatorRole,
+            weight: this.data.weight,
             result: this.data.result
           }
         })
@@ -456,6 +485,39 @@ Page({
         this.data.result[index].score = score
         return
       }
+    })
+  },
+
+  getEvaluatorName(e) {
+    this.data.evaluatorName = e.detail.value
+  },
+
+  roleChange(e) {
+    const index = e.detail.value
+    this.setData({
+      evaluatorRole: this.data.role[index].name
+    })
+  },
+
+  closeModal() {
+    if (this.data.evaluatorName == '') {
+      alert('请输入评估人姓名')
+      return
+    }
+    if (this.data.evaluatorRole == '') {
+      alert('请选择评估人角色')
+      return
+    }
+
+    this.data.role.forEach(e => {
+      if (e.name == this.data.evaluatorRole) {
+        this.data.weight = e.weight
+        return
+      }
+    })
+
+    this.setData({
+      showModal: false
     })
   }
 })

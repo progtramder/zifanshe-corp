@@ -26,7 +26,6 @@
   .weui-form-preview__label {
     float: left;
     margin-right: 1em;
-    min-width: 4em;
     text-align: justify;
     text-align-last: justify;
   }
@@ -36,4 +35,8 @@
     word-break: normal;
     word-wrap: break-word;
     color: purple;
+  }
+
+  .preview-head {
+    font-weight: bold;
   }

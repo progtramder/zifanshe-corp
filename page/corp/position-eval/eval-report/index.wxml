@@ -6,7 +6,7 @@
       <image bindtap="viewDocument" class="doc-image" src="/image/excel.png" />
     </view>
     <view class="seperator"></view>
-    <button bindtap="copyLink" class="default-button">复制文件链接</button>
+    <button hover-class="hover" bindtap="copyLink" class="default-button">复制文件链接</button>
   </view>
   </view>
 </view>
