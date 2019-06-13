@@ -11,8 +11,7 @@ Page({
 
   onLoad(options) {
     //评估企业的id
-    const { corp } = options
-    this.data.corp = corp
+    this.data.corp = options.corp
   },
 
   getPositionName(e) {

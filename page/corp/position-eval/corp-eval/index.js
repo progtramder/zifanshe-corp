@@ -24,9 +24,7 @@ Page({
       wx.showNavigationBarLoading()
       const db = wx.cloud.database();
       const res = await db.collection('eval-corp').doc(id).get()
-      this.setData({
-        coefficient: res.data.coefficient
-      })
+      this.data.coefficient = res.data.coefficient
     } finally {
       wx.hideNavigationBarLoading()
     }

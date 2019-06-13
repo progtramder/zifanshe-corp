@@ -371,8 +371,8 @@ Page({
         corp: options.corp,
         position: options.position,
         _openid: openId
-      }).count()
-      const fresh = res.total == 0 ? true : false
+      }).get()
+      const docId = res.data.length == 0 ? '' : res.data[0]._id
       const result = []
       model.forEach(e1 => {
         e1.subItem.forEach(e2 => {
@@ -381,8 +381,8 @@ Page({
       })
 
       this.setData({
-        fresh,
-        showModal: fresh,
+        evalId: docId,
+        showModal: docId == '' ? true : false,
         evaluatorName: '',
         evaluatorRole: '',
         corp: options.corp, //评估企业的id
@@ -424,7 +424,7 @@ Page({
     try {
       wx.showLoading()
       const db = wx.cloud.database();
-      if (this.data.fresh) {
+      if (this.data.evalId == '') {
         //如果没有评估过则添加字段
         await db.collection('evaluation').add({
           data: {
@@ -446,7 +446,7 @@ Page({
         })
       } else {
         //修改原有字段
-        await db.collection('evaluation').doc(res.data[0]._id).update({
+        await db.collection('evaluation').doc(this.data.evalId).update({
           data: {
             result: this.data.result
           }

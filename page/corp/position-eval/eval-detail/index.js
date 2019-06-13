@@ -17,11 +17,9 @@ Page({
       const db = wx.cloud.database();
       let res = await db.collection('eval-corp').doc(options.corp).get()
       const coefficient = res.data.coefficient
-      res = await db.collection('eval-positions').doc(options.position).get()
-      const position = res.data
       res = await db.collection('evaluation').where({
         corp: options.corp,
-        position: position._id
+        position: options.position
       }).get()
       
       const evaluation = formatEvaluation(res.data, coefficient)
