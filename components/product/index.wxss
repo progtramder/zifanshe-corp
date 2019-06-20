@@ -1,6 +1,3 @@
-.hide {
-  display: none;
-}
 .cover {
   width: 100%;
   background-color: white;
@@ -66,49 +63,50 @@
   height: 500rpx;
 }
 
-.user-info {
-  position: absolute;
-  top: 15%;
-  left: 0;
-  width: 100%;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: f0f0f0;
-  opacity: 1;
-  z-index: 1000;
-}
-.input-box {
-  margin: 30rpx 0;
-  width: 690rpx;
-  border-style:solid;
-  border-width: 1rpx;
-  border-color: #F56C6C;
-  border-radius: 10rpx;
-}
-.input {
-  height: 80rpx;
-  color: gray;
-  padding-left: 10rpx;
-  font-style: italic;
-}
-
-.user-info-container {
-  overflow-x: hidden;
+.mask {
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 101;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.user-info-container {
   position: fixed;
-  background-color: #f0f0f0;
-  z-index: 999;
+  height: 750rpx;
+  width: 100%;
+  bottom: -1000rpx;
+  left: 0;
+  z-index: 102;
+  background-color: #F6F6F6;
+  padding: 80rpx 50rpx;
+  box-sizing: border-box;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.user-info-container-show {
+  transform: translateY(-1000rpx);
+  transition: .3s;
+}
+.input-box {
+  margin: 30rpx 0;
+  border-style:solid;
+  border-width: 5rpx;
+  border-color: grey;
+  box-sizing: border-box;
+  border-radius: 5rpx;
+}
+.input {
+  height: 100rpx;
+  color: gray;
+  padding-left: 10rpx;
 }
 
 .confirm-box {
   margin: 30rpx 0;
-  width: 690rpx;
   display: flex;
   justify-content: space-between;
   align-items: center
@@ -118,22 +116,23 @@
   width: 250rpx;
   height: 100rpx;
   border-style:solid;
-  border-width: 1rpx;
-  border-color: #F56C6C;
-  border-radius: 10rpx;
-  color: #F56C6C;
+  border-width: 5rpx;
+  border-color: grey;
   text-align: center;
   line-height: 100rpx;
+  border-radius: 5rpx;
+  color: #72D332;
 }
 .cancel {
   width: 250rpx;
   height: 100rpx;
   border-style:solid;
-  border-width: 1rpx;
-  border-color: #F56C6C;
-  border-radius: 10rpx;
+  border-width: 5rpx;
+  border-color: grey;
   text-align: center;
   line-height: 100rpx;
+  border-radius: 5rpx;
+  color: #F56C6C;
 }
 
 .navigator-hover {

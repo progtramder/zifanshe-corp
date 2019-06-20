@@ -55,6 +55,24 @@ Component({
     },
     cancel() {
       this.hideUserInfo()
+    },
+    previewCover() {
+      wx.previewImage({
+        urls: [this.data.product.cover],
+        current: this.data.product.cover
+      })
+    },
+    previewDetail(e) {
+      let urls = []
+      this.data.product.detail.forEach(item => {
+        if (item.type == 'image') {
+          urls.push(item.src)
+        }
+      })
+      wx.previewImage({
+        urls,
+        current: e.currentTarget.dataset.imgpath
+      })
     }
   }
 })

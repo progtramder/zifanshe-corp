@@ -1,8 +1,8 @@
 <view class="container">
   <view class="page-body">
     <view class="cover">
-      <image class="cover-image" src="{{cover}}"/>
-      <view class="overlap-icon iconfont icon-image" bindtap="addCover"></view>
+      <image bindtap="addCover" class="cover-image" src="{{cover}}"/>
+      <view wx:if="{{cover==''}}" class="overlap-icon iconfont icon-image" bindtap="addCover"></view>
     </view>
     <view class="product-info-item">
       <view>名称</view>
