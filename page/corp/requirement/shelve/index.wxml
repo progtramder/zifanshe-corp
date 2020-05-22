@@ -2,7 +2,7 @@
   <view class="page-body">
     <view class="cover">
       <image class="cover-image" src="{{cover}}"/>
-      <view class="overlap-icon iconfont icon-image" bindtap="addCover"></view>
+      <view wx:if="{{cover==''}}" class="overlap-icon iconfont icon-image" bindtap="addCover"></view>
     </view>
     <view class="requirement-info-item">
       <view>标题</view>
