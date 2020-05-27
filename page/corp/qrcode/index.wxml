@@ -8,6 +8,8 @@
         footer=""
       />
     </view>
+    <!--->
     <view class="float-bar" bindtap="showQrCode">为产品主页生成小程序码</view>
+    <--->
   </view>
 </view>

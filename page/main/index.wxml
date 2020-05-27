@@ -1,23 +1,25 @@
 <view class="container">
   <view class="page-body">
-    <swiper indicator-dots="true" circular="true" bindchange="swiperItemChanged"
-      bindtap="swiperItemTap" autoplay="true" interval="3000" duration="1000">
-      <block wx:for="{{bulletins}}" wx:key="item">
-        <swiper-item>
-          <image src="{{item.image}}" class="swiper-item" />
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class="corp-requirement">
-      <view class="corp-requirement-title">企业需求</view>
-      <view wx:for="{{requirement}}" wx:key="item" class="exhibit-item-wrapper">
-        <exhibit-item url="../corp-requirement/index?id={{item._id}}"
-          imgpath="{{item.cover}}"
-          title="{{item.name}}"
-          body="{{item.brief}}"
-          footer=""
-        />
-      </view>
+    <view class="image-box">
+      <image src="{{image}}" mode="widthFix" class="main-image" />
+    </view>
+    <view class="contents">
+      <navigator class="item-box" url="consultants/index">
+        <image src="/image/consulting.png"/>
+        <text>管理咨询</text>
+      </navigator>
+      <navigator class="item-box" url="category/index?category=study">
+        <image src="/image/study.png"/>
+        <text>学习&成长</text>
+      </navigator>
+      <navigator class="item-box" url="category/index?category=hrpartner">
+        <image src="/image/hrparter.png"/>
+        <text>HR 伙伴</text>
+      </navigator>
+      <navigator class="item-box" url="category/index?category=coach">
+        <image src="/image/coach.png"/>
+        <text>团队教练</text>
+      </navigator>
     </view>
   </view>
 </view>

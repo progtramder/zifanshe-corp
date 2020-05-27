@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "",
   "usingComponents": {
-    "rich-editor": "/components/rich-editor-plus/index"
+    "exhibit-item": "/components/exhibit/exhibit"
   }
 }

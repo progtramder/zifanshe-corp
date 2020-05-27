@@ -73,6 +73,26 @@ Component({
         urls,
         current: e.currentTarget.dataset.imgpath
       })
+    },
+    viewDocument(e) {
+      const docPath = e.currentTarget.dataset.docpath
+      wx.showLoading({
+        title: '正在下载文件',
+      })
+      wx.cloud.downloadFile({
+        fileID: docPath,
+        success: function (res) {
+          wx.openDocument({
+            filePath: res.tempFilePath,
+          })
+        },
+        fail: function (res) {
+          console.log(res);
+        },
+        complete: function () {
+          wx.hideLoading()
+        }
+      })
     }
   }
 })

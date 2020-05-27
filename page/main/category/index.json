@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit/exhibit"
+  }
+}

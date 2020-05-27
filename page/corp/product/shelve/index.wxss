@@ -43,3 +43,11 @@
   width: 100%;
   min-height: 200rpx;
 }
+.category-box {
+  line-height: 4rem;
+  font-size: 28rpx;
+}
+
+label {
+  margin-right: 20rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "管理咨询",
+  "usingComponents": {
+    "exhibit-item": "/components/exhibit/exhibit"
+  }
+}

@@ -9,11 +9,8 @@
     "page/corp-product/index",
     "page/corp-product/product-detail/index",
     "page/corp-product/pay/index",
-    "page/corp/requirement/index",
-    "page/corp/requirement/shelve/index",
     "page/corp/product/index",
     "page/corp/product/shelve/index",
-    "page/corp-requirement/index",
     "page/corp/corp-info/index",
     "page/corp/admin/admin",
     "page/corp/verify/index",
@@ -30,7 +27,10 @@
     "page/corp/position-eval/create-corp/index",
     "page/corp/position-eval/position/index",
     "page/corp/position-eval/eval-detail/index",
-    "page/corp/position-eval/eval-report/index"
+    "page/corp/position-eval/eval-report/index",
+    "page/main/consultants/index",
+    "page/main/category/index",
+    "page/main/consultant-profile/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

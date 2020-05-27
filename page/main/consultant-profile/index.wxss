@@ -1,0 +1,64 @@
+@import "../../common/index.wxss";
+.page-body-info {
+  padding-bottom: 20rpx;
+  height: 270rpx;
+}
+.consultant-avatar {
+  border-radius: 50%;
+  width: 180rpx;
+  height: 180rpx;
+}
+.consultant-name {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.consultants-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:white;
+  padding: 30rpx 0;
+  font-size: 0.7rem;
+  color: gray;
+}
+
+.section-title{
+  margin-bottom: 30rpx;
+  height: 60rpx;
+  width: 200rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: black;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.intro-text {
+  font-size: 29rpx;
+  color: gray;
+  width: 630rpx;
+  white-space: pre-wrap;
+}
+
+.product-section {
+  margin-bottom: 20rpx;
+}
+.product-section-text {
+  padding: 30rpx;
+  margin-bottom: 2rpx;
+  background-color: white;
+}
+
+.product-item {
+  background-color: white;
+  padding: 10rpx 20rpx 10rpx;
+  border-bottom-color: #f0f0f0;
+  border-bottom-width: .1rpx;
+  border-bottom-style: solid;
+}
+
+.section{
+  width: 100%;
+  margin-bottom: 5rpx;
+}

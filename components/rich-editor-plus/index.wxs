@@ -1,15 +1,10 @@
-var transform = function (product) {
-  var price = '￥' + product.price / 100
-  return price
-}
-
 var docImage = function (docPath) {
   var lastIndex = docPath.lastIndexOf(".")
   var sfx = docPath.slice(lastIndex)
   if (sfx.match('pdf')) {
     return '/image/pdf.png'
   } else if (sfx.match('ppt')) {
-    return '/image/ppt.png'
+    return '/image/ppt.png' 
   } else if (sfx.match('xls')) {
     return '/image/excel.png'
   } else if (sfx.match('doc')) {
@@ -18,4 +13,3 @@ var docImage = function (docPath) {
 }
 
 module.exports.docImage = docImage
-module.exports.transform = transform

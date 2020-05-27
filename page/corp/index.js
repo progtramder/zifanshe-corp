@@ -19,10 +19,14 @@ TabPage({
   async onLoad() {
     try {
       wx.showNavigationBarLoading()
+      let openId = app.getOpenId()
+      if (!openId) {
+        const res = await wx.cloud.callFunction({ name: 'login' })
+        openId = res.result.openId
+        app.setOpenId(openId)
+      }
       const db = wx.cloud.database()
-      let res = await wx.cloud.callFunction({name: 'login'})
-      const { openId } = res.result
-      res = await db.collection('corp-admin').where({
+      let res = await db.collection('corp-admin').where({
         admin: openId
       }).get()
       if (res.data.length > 0) {
@@ -40,7 +44,6 @@ TabPage({
         } else {
           config.updateRedDot(this)
         }
-        app.setOpenId(openId)
         app.setCorpId(corpId)
         app.setCorpName(name)
         this.setData({

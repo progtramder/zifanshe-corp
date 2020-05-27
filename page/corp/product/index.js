@@ -88,12 +88,20 @@ Page({
             })
             this.clearProduct(deleted[0])
           }).catch(err => {
-            console.log(err)
+            wx.showModal({
+              content: '没有权限',
+              showCancel: false,
+              confirmColor: '#F56C6C',
+              confirmText: '知道了',
+              success: (res) => {
+                this.selectComponent(`#${e.currentTarget.id}`).reset()
+              }
+            })
           })
         } else {
           this.selectComponent(`#${e.currentTarget.id}`).reset()
         }
-      }
+      },
     })
   },
   shelve() {

@@ -15,6 +15,19 @@
     <view class="product-info-item">
       <textarea auto-height="true" value="{{brief}}" bindinput="getProductBrief" placeholder-class="placeholder" placeholder="产品简介"></textarea>
     </view>
+    <view class="product-info-item">
+      <radio-group class="category-box" bindchange="radioChange">
+        <label>
+          <radio color="#F56C6C" value="study" checked="{{category=='study'}}"/>学习&成长
+        </label>
+        <label>
+          <radio color="#F56C6C" value="hrpartner" checked="{{category=='hrpartner'}}"/>HR 伙伴
+        </label>
+        <label>
+          <radio color="#F56C6C" value="coach" checked="{{category=='coach'}}"/>团队教练
+        </label>
+      </radio-group>
+    </view>
     <view class="product-content-title">产品详情</view>
     <rich-editor id="rich_editor" bind:add="addDetail" bind:delete="deleteDetail"/>
     <view class="float-bar" bindtap="onFinish">完成</view>

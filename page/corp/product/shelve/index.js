@@ -10,6 +10,7 @@ Page({
     name:  '',
     brief: '',
     price: '',
+    category: 'study',
     detail: [],
     deletedFiles: [] //对于视频和图片两种类型删除数据库的同时还要删除文件
   },
@@ -37,6 +38,7 @@ Page({
           name: product.name,
           brief: product.brief,
           price: product.price / 100,
+          category: product.category,
           detail: product.detail
         })
       })
@@ -70,13 +72,16 @@ Page({
     this.data.name = e.detail.value
   },
 
+  radioChange(e) {
+    this.data.category = e.detail.value
+  },
+
   check() {
-    if (this.data.name == '' || this.data.price == '' || this.data.cover == '') {
-      this.alert('请完整填写内容')
+    if (this.data.name == '') {
+      this.alert('产品名称不能为空')
       return false
-    }
-    if (this.data.price < 0.01) {
-      this.alert("价格金额太小")
+    } else if (this.data.cover == '') {
+      this.alert('请选择封面图片')
       return false
     }
 
@@ -149,6 +154,7 @@ Page({
             cover: this.data.cover,
             name: this.data.name,
             brief: this.data.brief,
+            category: this.data.category,
             price: this.data.price * 100,
             detail: this.data.detail
           }
@@ -162,7 +168,7 @@ Page({
       }
       wx.navigateBack()
     } catch(err) {
-      this.alert('请检查网络')
+      this.alert(err.errMsg)
       console.log(err)
     } finally {
       wx.hideLoading()

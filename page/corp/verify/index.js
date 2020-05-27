@@ -87,7 +87,7 @@ Page({
       })
       wx.navigateBack()
     } catch(err) {
-      this.alert('网络好像出问题了。')
+      this.alert(err.errMsg)
     } finally {
       wx.hideLoading()
     }

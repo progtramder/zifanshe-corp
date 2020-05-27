@@ -16,15 +16,6 @@
     </view>
     <view class="page-section">
       <view class="navigator-box">
-        <navigator url="position-eval/index" class="navigator">
-          <image class="navigator-img-front" src="/image/eval.png"></image>
-          <view class="navigator-text">岗位价值评估</view>
-          <view class="navigator-arrow"></view>
-        </navigator>
-      </view>
-    </view>
-    <view class="page-section">
-      <view class="navigator-box">
         <navigator url="product/index" class="navigator">
           <image class="navigator-img-front" src="/image/product.png"></image>
           <view class="navigator-text">产品发布</view>
@@ -33,11 +24,6 @@
         <navigator url="qrcode/index" class="navigator">
           <image class="navigator-img-front" src="/image/qrcode.png"></image>
           <view class="navigator-text">小程序码</view>
-          <view class="navigator-arrow"></view>
-        </navigator>
-        <navigator url="requirement/index" class="navigator">
-          <image class="navigator-img-front" src="/image/requirement.png"></image>
-          <view class="navigator-text">需求发布</view>
           <view class="navigator-arrow"></view>
         </navigator>
         <navigator url="account/account?openId={{openId}}" class="navigator">
@@ -51,16 +37,16 @@
           <view wx:if="{{newOrder}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>
+      </view>
+    </view>
+    <view class="page-section">
+      <view class="navigator-box">
         <navigator url="message/message" class="navigator">
           <image class="navigator-img-front" src="/image/message.png"></image>
           <view class="navigator-text">系统消息</view>
           <view wx:if="{{newMessage}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>
-      </view>
-    </view>
-    <view class="page-section">
-      <view class="navigator-box">
         <navigator url="corp-admin/index" class="navigator">
           <image class="navigator-img-front" src="/image/admin.png"></image>
           <view class="navigator-text">平台管理</view>
@@ -68,6 +54,7 @@
         </navigator>
       </view>
     </view>
+    <!-->
     <view class="page-section">
       <view class="navigator-box">
         <navigator url="" class="navigator">
@@ -82,11 +69,29 @@
         </navigator>
       </view>
     </view>
+    <-->
     <view wx:if="{{superAdmin}}"class="page-section">
+      <view class="navigator-box">
+        <navigator url="position-eval/index" class="navigator">
+          <image class="navigator-img-front" src="/image/eval.png"></image>
+          <view class="navigator-text">岗位价值评估</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="" class="navigator">
+          <image class="navigator-img-front" src="/image/eval.png"></image>
+          <view class="navigator-text">领导力测评</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+        <navigator url="" class="navigator">
+          <image class="navigator-img-front" src="/image/eval.png"></image>
+          <view class="navigator-text">人力资源体系诊断调研</view>
+          <view class="navigator-arrow"></view>
+        </navigator>
+      </view>
       <view class="navigator-box">
         <navigator url="admin/admin" class="navigator">
           <image class="navigator-img-front" src="/image/admin.png"></image>
-          <view class="navigator-text">超级管理员</view>
+          <view class="navigator-text">入驻企业审核</view>
           <view wx:if="{{newVerifying}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>

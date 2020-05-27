@@ -1,0 +1,9 @@
+<view wx:for="{{cosultants}}" wx:key="item" class="exhibit-item-wrapper">
+  <exhibit-item url="../consultant-profile/index?id={{item._id}}"
+    imgpath="{{item.logo}}"
+    title="{{item.name}}"
+    body="{{item.intro}}"
+    footer=""
+    imgshape="circle"
+  />
+</view>

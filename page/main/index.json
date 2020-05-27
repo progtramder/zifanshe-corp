@@ -1,7 +1,4 @@
 {
     "navigationBarTitleText": "子繁社企业平台",
-    "usingComponents": {
-      "exhibit-item": "/components/exhibit/exhibit"
-    },
     "enablePullDownRefresh": true
 }

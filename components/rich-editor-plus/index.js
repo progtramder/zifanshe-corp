@@ -79,6 +79,44 @@ Component({
       })
     },
 
+    addDocument(e) {
+      const suffix = (file) => {
+        let suffix = file.match(/\.\w+$/)
+        if (suffix) return suffix[0]
+        return ''
+      }
+
+      const index = e.currentTarget.dataset.index;
+      wx.chooseMessageFile({
+        count: 1,
+        type: 'file',
+        success: res => {
+          const tempFilePath = res.tempFiles[0].path
+          const tempFileName = res.tempFiles[0].name
+          let node
+          const sfx = suffix(tempFilePath)
+          if (sfx.match('pdf') || sfx.match('ppt') || sfx.match('xls') || sfx.match('doc')) {
+            node = {
+              type: 'document',
+              src: tempFilePath
+            }
+            let nodeList = this.data.nodeList;
+            nodeList.splice(index + 1, 0, node);
+            this.setData({
+              nodeList
+            })
+            this.triggerEvent("add", nodeList);
+          } else {
+            wx.showModal({
+              content: '文档格式不支持',
+              showCancel: false,
+              confirmColor: '#F56C6C',
+              confirmText: '知道了'
+            })
+          }
+        }
+      })
+    },
     onTextInput(e) {
       const index = e.currentTarget.dataset.index;
       let nodeList = this.data.nodeList;
@@ -94,6 +132,33 @@ Component({
       })
     },
 
+    documentTap(e) {
+      const docPath = e.currentTarget.dataset.docpath
+      //云上的文件需先下载
+      if (docPath.match(/^cloud:\/\//)) {
+        wx.showLoading({
+          title: '正在下载文件',
+        })
+        wx.cloud.downloadFile({
+          fileID: docPath,
+          success: function (res) {
+            wx.openDocument({
+              filePath: res.tempFilePath,
+            })
+          },
+          fail: function (res) {
+            console.log(res);
+          },
+          complete: function () {
+            wx.hideLoading()
+          }
+        })
+      } else {
+        wx.openDocument({
+          filePath: docPath
+        })
+      }
+    },
     /**
      * 事件：删除节点
      */

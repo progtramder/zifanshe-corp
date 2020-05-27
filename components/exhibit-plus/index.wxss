@@ -18,7 +18,7 @@
 }
 .exhibit-item image {
   height: 250rpx;
-  width: 330rpx;
+  width: 320rpx;
   flex: none;
   border-radius: 10rpx;
 }
