@@ -20,6 +20,28 @@ Page({
     })
   },
 
+  async viewDocument(event) {
+    const document = event.detail
+    const docPath = document.src
+    wx.showLoading({
+      title: '正在下载文件',
+    })
+    wx.cloud.downloadFile({
+      fileID: docPath,
+      success: function (res) {
+        wx.openDocument({
+          filePath: res.tempFilePath,
+        })
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
+  },
+
   async showQrCode() {
     try {
       wx.showLoading()

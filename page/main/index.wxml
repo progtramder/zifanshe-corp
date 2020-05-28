@@ -1,8 +1,16 @@
 <view class="container">
   <view class="page-body">
-    <view class="image-box">
+    <view>
       <image src="{{image}}" mode="widthFix" class="main-image" />
     </view>
+    <swiper class="swiper-box" circular="true" autoplay="true" interval="2000" duration="1000">
+      <swiper-item wx:for="{{corps}}" wx:key="item" class="swiper-item">
+        <navigator url="./consultant-profile/index?id={{item._id}}" class="corp-info">
+          <image src="{{item.logo}}"></image>
+          <text>{{item.name}}</text>
+      </navigator>
+      </swiper-item>
+    </swiper>
     <view class="contents">
       <navigator class="item-box" url="category/index?category=consulting&title=管理咨询">
         <image src="/image/consulting.png"/>

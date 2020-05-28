@@ -14,9 +14,9 @@ var docImage = function (docPath) {
 
 var transform = function(locker) {
   if (locker) {
-    return 'editor-locker iconfont icon-lock'
+    return 'editor-locker color-lock iconfont icon-lock'
   } else {
-    return 'editor-locker iconfont icon-unlock'
+    return 'editor-locker color-unlock iconfont icon-unlock'
   }
 }
 module.exports.docImage = docImage

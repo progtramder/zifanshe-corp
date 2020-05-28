@@ -112,11 +112,16 @@
   top: 100rpx;
   right: -18rpx;
   border-radius: 50%;
-  background: #F56C6C;
   color: #fff;
   z-index: 100;
 }
 
+.color-lock {
+  background: #F56C6C;
+}
+.color-unlock {
+  background: #72D332;
+}
 .editor-image {
   display: block;
   width: 650rpx;

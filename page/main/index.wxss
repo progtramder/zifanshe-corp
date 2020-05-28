@@ -4,12 +4,10 @@
   padding-bottom: 10rpx;
   overflow-x: hidden;
 }
-.image-box {
-  display: block;
-}
+
 .main-image {
+  display: block;
   width: 100%;
-  height: 100%;
   box-sizing: border-box;
 }
 .contents {
@@ -38,4 +36,35 @@
   margin-right: 20rpx;
   height: 60rpx;
   width: 60rpx;
+}
+
+.swiper-box {
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  height: 180rpx;
+}
+.swiper-item {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.corp-info {
+  display:flex;
+  height: 180rpx;
+  align-items: center;
+  background-color: white;
+  padding: 0 30rpx;
+}
+.corp-info image {
+  display: block;
+  border-radius: 10rpx;
+  width: 200rpx;
+  height: 150rpx;
+  box-sizing: border-box;
+}
+.corp-info text {
+  margin-left: 20rpx;
+  flex: 1;
 }

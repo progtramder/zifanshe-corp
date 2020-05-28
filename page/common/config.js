@@ -43,15 +43,14 @@ function hasNewVerifying() {
 }
 
 function updateRedDot(hostPage) {
-  let promise = Promise.all([hasNewMessage(), hasNewOrder()])
+  let promise = Promise.all([hasNewMessage()])
   promise.then(res => {
     if (hostPage) {
       hostPage.setData({
         newMessage: res[0],
-        newOrder: res[1]
       })
     }
-    if (res[0] || res[1]) {
+    if (res[0]) {
       wx.showTabBarRedDot({ index: tabIndex })
     } else {
       wx.hideTabBarRedDot({ index: tabIndex })
@@ -60,16 +59,15 @@ function updateRedDot(hostPage) {
 }
 
 function updateRedDotAdmin(hostPage) {
-  let promise = Promise.all([hasNewVerifying(), hasNewMessage(), hasNewOrder()])
+  let promise = Promise.all([hasNewVerifying(), hasNewMessage()])
   promise.then(res => {
     if (hostPage) {
       hostPage.setData({
         newVerifying: res[0],
         newMessage: res[1],
-        newOrder: res[2]
       })
     }
-    if (res[0] || res[1] || res[2]) {
+    if (res[0] || res[1]) {
       wx.showTabBarRedDot({ index: tabIndex })
     } else {
       wx.hideTabBarRedDot({ index: tabIndex })

@@ -34,7 +34,6 @@
         <navigator url="order/order" class="navigator">
           <image class="navigator-img-front" src="/image/order.png"></image>
           <view class="navigator-text">订单管理</view>
-          <view wx:if="{{newOrder}}"class="red-dot"></view>
           <view class="navigator-arrow"></view>
         </navigator>
       </view>

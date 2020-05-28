@@ -51,6 +51,46 @@ Page({
     this.selectComponent("#product").popUserInfo()
   },
 
+  async viewDocument(event) {
+    const document = event.detail
+    const locker = document.locker
+    if (locker) {
+      const db = wx.cloud.database()
+      const res = await db.collection('order').where({
+        payer: app.getOpenId(),
+        product: this.data.product._id,
+        status: 1 //已支付
+      }).get()
+      if (res.data.length == 0) {
+        wx.showModal({
+          content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
+          showCancel: false,
+          confirmColor: '#F56C6C',
+          confirmText: '知道了'
+        })
+        return
+      }
+    }
+    const docPath = document.src
+    wx.showLoading({
+      title: '正在下载文件',
+    })
+    wx.cloud.downloadFile({
+      fileID: docPath,
+      success: function (res) {
+        wx.openDocument({
+          filePath: res.tempFilePath,
+        })
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
+  },
+
   onSubmitOrder() {
     const customer = this.data.customer
     if (customer.name == '' || customer.phone == '') {
