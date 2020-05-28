@@ -10,7 +10,7 @@ Page({
     name:  '',
     brief: '',
     price: '',
-    category: 'study',
+    category: 'consulting',
     detail: [],
     deletedFiles: [] //对于视频和图片两种类型删除数据库的同时还要删除文件
   },
@@ -65,7 +65,10 @@ Page({
   },
 
   getProductPrice(e) {
-    this.data.price = e.detail.value
+    //价格变动需要更新文档或视频的locker状态，所以需要setData
+    this.setData({
+      price: e.detail.value
+    })
   },
 
   getProductName(e) {
@@ -114,7 +117,7 @@ Page({
       if (!this.data.cover.match(/^cloud:\/\//)) {
         const res = await new Promise((resolve, reject) => {
           wx.cloud.uploadFile({
-            cloudPath: `product/${productId}-cover${suffix(this.data.cover)}`,
+            cloudPath: `product/${productId}-cover-${new Date().getMilliseconds()}${suffix(this.data.cover)}`,
             filePath: this.data.cover,
             success: res => {
               resolve({ file: res.fileID })

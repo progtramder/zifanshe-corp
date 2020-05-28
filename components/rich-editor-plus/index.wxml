@@ -40,6 +40,10 @@
         </view>
       </block>
       <view class="editor-delete iconfont icon-close" data-index="{{index}}" bindtap="deleteNode"></view>
+      <view wx:if="{{locker=='true'&&(node.type === 'document'||node.type === 'video')}}" 
+        class="{{mod.transform(node.locker)}}" 
+        data-index="{{index}}" bindtap="lock">
+      </view>
     </view>
     <view class="editor-add-wrapper">
       <view class="editor-add iconfont icon-text" data-index="{{index}}" bindtap="addText"></view>

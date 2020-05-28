@@ -85,7 +85,7 @@ Page({
       if (!this.data.logo.match(/^cloud:\/\//)) {
         const res = await new Promise((resolve, reject) => {
           wx.cloud.uploadFile({
-            cloudPath: `image/corp-logo/${corpId}${suffix(this.data.logo)}`,
+            cloudPath: `image/corp-logo/${corpId}-${new Date().getMilliseconds()}${suffix(this.data.logo)}`,
             filePath: this.data.logo,
             success: res => {
               resolve({ file: res.fileID })
@@ -115,7 +115,7 @@ Page({
 
       newApply ? this.alert('提交成功，请耐心等待审核通过') : this.alert('保存成功')
     } catch (err) {
-      this.alert('请检查网络')
+      this.alert(err.errMsg)
       console.log(err)
     } finally {
       wx.hideLoading()

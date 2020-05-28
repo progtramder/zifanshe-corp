@@ -4,19 +4,19 @@
       <image src="{{image}}" mode="widthFix" class="main-image" />
     </view>
     <view class="contents">
-      <navigator class="item-box" url="consultants/index">
+      <navigator class="item-box" url="category/index?category=consulting&title=管理咨询">
         <image src="/image/consulting.png"/>
         <text>管理咨询</text>
       </navigator>
-      <navigator class="item-box" url="category/index?category=study">
+      <navigator class="item-box" url="category/index?category=study&title=学习成长">
         <image src="/image/study.png"/>
-        <text>学习&成长</text>
+        <text>学习成长</text>
       </navigator>
-      <navigator class="item-box" url="category/index?category=hrpartner">
+      <navigator class="item-box" url="category/index?category=hrpartner&title=HR 伙伴">
         <image src="/image/hrparter.png"/>
         <text>HR 伙伴</text>
       </navigator>
-      <navigator class="item-box" url="category/index?category=coach">
+      <navigator class="item-box" url="category/index?category=coach&title=团队教练">
         <image src="/image/coach.png"/>
         <text>团队教练</text>
       </navigator>

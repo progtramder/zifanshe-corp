@@ -18,7 +18,10 @@
     <view class="product-info-item">
       <radio-group class="category-box" bindchange="radioChange">
         <label>
-          <radio color="#F56C6C" value="study" checked="{{category=='study'}}"/>学习&成长
+          <radio color="#F56C6C" value="consulting" checked="{{category=='consulting'}}"/>管理咨询
+        </label>
+        <label>
+          <radio color="#F56C6C" value="study" checked="{{category=='study'}}"/>学习成长
         </label>
         <label>
           <radio color="#F56C6C" value="hrpartner" checked="{{category=='hrpartner'}}"/>HR 伙伴
@@ -29,7 +32,7 @@
       </radio-group>
     </view>
     <view class="product-content-title">产品详情</view>
-    <rich-editor id="rich_editor" bind:add="addDetail" bind:delete="deleteDetail"/>
+    <rich-editor locker="{{price>0?'true':'false'}}" id="rich_editor" bind:add="addDetail" bind:delete="deleteDetail"/>
     <view class="float-bar" bindtap="onFinish">完成</view>
   </view>
 </view>

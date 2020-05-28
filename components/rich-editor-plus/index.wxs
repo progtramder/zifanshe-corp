@@ -12,4 +12,12 @@ var docImage = function (docPath) {
   }
 }
 
+var transform = function(locker) {
+  if (locker) {
+    return 'editor-locker iconfont icon-lock'
+  } else {
+    return 'editor-locker iconfont icon-unlock'
+  }
+}
 module.exports.docImage = docImage
+module.exports.transform = transform

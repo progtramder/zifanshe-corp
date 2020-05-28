@@ -12,6 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: options.title,
+    })
     try {
       wx.showNavigationBarLoading()
       const db = wx.cloud.database();

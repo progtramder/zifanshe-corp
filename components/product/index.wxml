@@ -21,7 +21,7 @@
           <video src="{{item.src}}" controls/>
         </view>
         <view wx:if="{{item.type=='document'}}" class="product-document">
-          <image src="{{index.docImage(item.src)}}" bindtap="viewDocument" data-docpath="{{item.src}}"/>
+          <image src="{{index.docImage(item.src)}}" bindtap="viewDocument" data-locker="{{item.locker}}" data-docpath="{{item.src}}"/>
         </view>
       </block>
     </view>

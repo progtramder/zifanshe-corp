@@ -37,7 +37,7 @@ Page({
       })
       wx.navigateBack()
     } catch (err) {
-      alert('网络异常')
+      alert(err.errMsg)
       console.log(err)
     } finally {
       wx.hideLoading()

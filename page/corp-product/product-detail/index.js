@@ -3,23 +3,24 @@ const app = getApp()
 Page({
   data: {
   },
-  onLoad: function (options) {
-    wx.showNavigationBarLoading()
-    const db = wx.cloud.database();
-    db.collection('product').where({
-      _id: options.id
-    }).get().then((res) => {
-      wx.hideNavigationBarLoading()
+  async onLoad(options) {
+    try {
+      wx.showNavigationBarLoading()
+      const db = wx.cloud.database();
+      let res = await db.collection('product').where({
+        _id: options.id
+      }).get()
       let product = res.data[0]
       wx.setNavigationBarTitle({ title: product.name })
       this.selectComponent("#product").init(product)
+      res = await db.collection('corp').doc(product.owner).get()
       this.setData({
         product,
+        logo: res.data.logo
       })
-    }).catch(err => {
+    } finally {
       wx.hideNavigationBarLoading()
-      console.log(err)
-    })
+    }
   },
 
   async onPay() {

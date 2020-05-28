@@ -13,3 +13,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.logo {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  top: 10rpx;
+  right: 10rpx;
+  border-radius: 50%;
+  box-sizing: border-box;
+}

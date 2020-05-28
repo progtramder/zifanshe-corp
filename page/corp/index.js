@@ -10,6 +10,13 @@ TabPage({
     corp: ''
   },
 
+  onShareAppMessage() {
+    return {
+      title: '企业中心',
+      path: 'page/corp/index'
+    }
+  },
+
   onShow() {
     if (this.data.enrolled) {
       this.data.superAdmin ? config.updateRedDotAdmin(this) : config.updateRedDot(this)

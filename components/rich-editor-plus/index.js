@@ -3,6 +3,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    locker: {
+      type: String,
+      value: 'false'
+    },
   },
 
   /**
@@ -67,6 +71,7 @@ Component({
         success: res => {
           const node = {
             type: 'video',
+            locker: false,
             src: res.tempFilePath
           }
           let nodeList = this.data.nodeList;
@@ -98,6 +103,7 @@ Component({
           if (sfx.match('pdf') || sfx.match('ppt') || sfx.match('xls') || sfx.match('doc')) {
             node = {
               type: 'document',
+              locker: false,
               src: tempFilePath
             }
             let nodeList = this.data.nodeList;
@@ -170,6 +176,17 @@ Component({
         nodeList,
       })
       this.triggerEvent("delete", {nodeList, node: nodes[0]});
+    },
+
+    lock: function (e) {
+      //toggle the locker
+      const index = e.currentTarget.dataset.index;
+      let nodeList = this.data.nodeList;
+      const locker = nodeList[index].locker
+      nodeList[index].locker = locker ? false : true
+      this.setData({
+        nodeList,
+      })
     },
 
     init(nodeList) {
