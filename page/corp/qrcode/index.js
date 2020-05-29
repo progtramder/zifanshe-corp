@@ -1,26 +1,42 @@
 const regeneratorRuntime = require("../../common/runtime")
 const app = getApp()
 Page({
-  onLoad() {
-    wx.setNavigationBarTitle({ title: app.getCorpName() })
-    const id = app.getCorpId()
-    wx.showNavigationBarLoading()
-    const db = wx.cloud.database();
-    db.collection('product').where({
-      owner: id
-    }).field({
-      detail: false
-    }).get().then((res) => {
-      wx.hideNavigationBarLoading()
+  async onLoad() {
+    try {
+      wx.showNavigationBarLoading()
+      const db = wx.cloud.database();
+      const res = await db.collection('product').where({
+        owner: app.getCorpId()
+      }).limit(10).get()
       this.setData({
-        product: res.data
+        product: res.data,
+        isEmpty: res.data.length == 0
       })
-    }).catch(err => {
+    } finally {
       wx.hideNavigationBarLoading()
-    })
+    }
   },
 
-  async showQrCode() {
+  async onReachBottom() {
+    try {
+      wx.showLoading()
+      const db = wx.cloud.database();
+      const res = await db.collection('product').where({
+        owner: app.getCorpId()
+      }).skip(
+        this.data.product.length
+      ).limit(10).get()
+      let product = this.data.product
+      product.push(...res.data)
+      this.setData({
+        product
+      })
+    } finally {
+      wx.hideLoading()
+    }
+  },
+  
+  /*async showQrCode() {
     try {
       wx.showLoading()
       let qrFile
@@ -59,5 +75,5 @@ Page({
     } finally {
       wx.hideLoading()
     }
-  }
+  }*/
 })

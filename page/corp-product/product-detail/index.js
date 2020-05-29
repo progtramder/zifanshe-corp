@@ -12,6 +12,19 @@ Page({
       }).get()
       let product = res.data[0]
       wx.setNavigationBarTitle({ title: product.name })
+
+      res = await db.collection('order').where({
+        payer: app.getOpenId(),
+        product: product._id,
+        status: 1 //已支付
+      }).get()
+      if (res.data.length > 0) {
+        for (let i = 0; i < product.detail.length; i++) {
+          if (product.detail[i].locker === true) {
+            product.detail[i].locker = false
+          }
+        }
+      }
       this.selectComponent("#product").init(product)
       res = await db.collection('corp').doc(product.owner).get()
       this.setData({

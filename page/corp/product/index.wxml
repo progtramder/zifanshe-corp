@@ -16,6 +16,7 @@
         footer=""
       />
     </view>
+    <view style="height:120rpx"/>
   </view>
 </view>
 <view class="float-bar">
