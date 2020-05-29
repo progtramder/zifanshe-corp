@@ -4,6 +4,6 @@
       <product bindsubmit="onSubmitOrder" bind:viewDocument="viewDocument" bind:playVideo="playVideo" id="product"/>
       <image src="{{logo}}" class="logo" />
     </view>
-    <view wx:if="{{product.price}}" class="buy-button" bindtap="onPay">￥{{product.price/100}} 立即购买</view>
+    <view wx:if="{{product.price}}" class="buy-button" bindtap="onPay">￥{{product.price/100}} {{purchased?'已购买':'立即购买'}}</view>
   </view>
 </view>

@@ -48,6 +48,7 @@ Page({
         }
       })
       await this.getOrder(out_trade_no)
+      wx.navigateBack()
     } finally {
       wx.hideLoading()
     }

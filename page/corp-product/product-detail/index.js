@@ -3,17 +3,34 @@ const app = getApp()
 Page({
   data: {
   },
-  async onLoad(options) {
+  onLoad(options) {
+    this.data.product_id = options.id
+  },
+  async onShow() {
     try {
       wx.showNavigationBarLoading()
-      const db = wx.cloud.database();
-      let res = await db.collection('product').where({
-        _id: options.id
-      }).get()
-      let product = res.data[0]
-      wx.setNavigationBarTitle({ title: product.name })
+      if (!app.getOpenId()) {
+        const res = await wx.cloud.callFunction({ name: 'login' })
+        const { openId } = res.result
+        app.setOpenId(openId)
+      }
 
-      res = await db.collection('order').where({
+      let product = this.data.product
+      let logo = this.data.logo
+      const db = wx.cloud.database();
+      if (!product) {
+        let res = await db.collection('product').where({
+          _id: this.data.product_id
+        }).get()
+        product = res.data[0]
+        wx.setNavigationBarTitle({ title: product.name })
+        res = await db.collection('corp').doc(product.owner).get()
+        logo = res.data.logo
+      }
+      
+      //判断用户是否已经购买该产品
+      let purchased = false
+      const res = await db.collection('order').where({
         payer: app.getOpenId(),
         product: product._id,
         status: 1 //已支付
@@ -24,12 +41,14 @@ Page({
             product.detail[i].locker = false
           }
         }
+        purchased = true
       }
       this.selectComponent("#product").init(product)
-      res = await db.collection('corp').doc(product.owner).get()
+      
       this.setData({
         product,
-        logo: res.data.logo
+        logo,
+        purchased
       })
     } finally {
       wx.hideNavigationBarLoading()
@@ -37,6 +56,10 @@ Page({
   },
 
   async onPay() {
+    if (this.data.purchased) {
+      return
+    }
+
     this.data.customer = {
       name: '',
       phone: '',
@@ -44,11 +67,6 @@ Page({
     }
     try {
       wx.showLoading()
-      if (!app.getOpenId()) {
-        const res = await wx.cloud.callFunction({ name: 'login' })
-        const { openId } = res.result
-        app.setOpenId(openId)
-      }
       const db = wx.cloud.database()
       const res = await db.collection('customer').where({
         _openid: app.getOpenId()
