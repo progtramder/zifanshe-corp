@@ -18,10 +18,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding-left: 70rpx;
-  padding-right: 20rpx;
+  padding-right: 50rpx;
 }
 .item-box {
   width: 300rpx;

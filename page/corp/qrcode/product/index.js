@@ -42,6 +42,11 @@ Page({
     })
   },
 
+  async playVideo(event) {
+    const component = event.detail
+    component.unlockVideo()
+  },
+
   async showQrCode() {
     try {
       wx.showLoading()

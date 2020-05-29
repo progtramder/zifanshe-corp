@@ -54,11 +54,12 @@ Page({
   async viewDocument(event) {
     const document = event.detail
     const locker = document.locker
-    if (locker) {
+    const product = this.data.product
+    if (product.price > 0 && locker) {
       const db = wx.cloud.database()
       const res = await db.collection('order').where({
         payer: app.getOpenId(),
-        product: this.data.product._id,
+        product: product._id,
         status: 1 //已支付
       }).get()
       if (res.data.length == 0) {
@@ -89,6 +90,27 @@ Page({
         wx.hideLoading()
       }
     })
+  },
+
+  async playVideo(event) {
+    const component = event.detail
+    const product = this.data.product
+    const db = wx.cloud.database()
+    const res = await db.collection('order').where({
+      payer: app.getOpenId(),
+      product: product._id,
+      status: 1 //已支付
+    }).get()
+    if (res.data.length == 0) {
+      wx.showModal({
+        content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
+        showCancel: false,
+        confirmColor: '#F56C6C',
+        confirmText: '知道了'
+      })
+    } else {
+      component.unlockVideo()
+    }
   },
 
   onSubmitOrder() {
