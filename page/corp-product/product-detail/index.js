@@ -19,10 +19,8 @@ Page({
       let logo = this.data.logo
       const db = wx.cloud.database();
       if (!product) {
-        let res = await db.collection('product').where({
-          _id: this.data.product_id
-        }).get()
-        product = res.data[0]
+        let res = await db.collection('product').doc(this.data.product_id).get()
+        product = res.data
         wx.setNavigationBarTitle({ title: product.name })
         res = await db.collection('corp').doc(product.owner).get()
         logo = res.data.logo
@@ -30,25 +28,36 @@ Page({
       
       //判断用户是否已经购买该产品
       let purchased = false
-      const res = await db.collection('order').where({
-        payer: app.getOpenId(),
-        product: product._id,
-        status: 1 //已支付
-      }).get()
-      if (res.data.length > 0) {
-        for (let i = 0; i < product.detail.length; i++) {
-          if (product.detail[i].locker === true) {
-            product.detail[i].locker = false
+      if (product.price > 0) {
+        const res = await db.collection('order').where({
+          payer: app.getOpenId(),
+          product: product._id,
+          status: 1 //已支付
+        }).get()
+        if (res.data.length > 0) {
+          for (let i = 0; i < product.detail.length; i++) {
+            if (product.detail[i].locker === true) {
+              product.detail[i].locker = false
+            }
           }
+          purchased = true
         }
-        purchased = true
       }
+      
+      //初始化产品详情组件
       this.selectComponent("#product").init(product)
       
       this.setData({
         product,
         logo,
         purchased
+      })
+    } catch(err) {
+      wx.showModal({
+        content: err.errMsg,
+        showCancel: false,
+        confirmColor: '#F56C6C',
+        confirmText: '知道了'
       })
     } finally {
       wx.hideNavigationBarLoading()
