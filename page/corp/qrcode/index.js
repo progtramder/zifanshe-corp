@@ -7,7 +7,7 @@ Page({
       const db = wx.cloud.database();
       const res = await db.collection('product').where({
         owner: app.getCorpId()
-      }).limit(10).get()
+      }).limit(10).field({ detail: false }).get()
       this.setData({
         product: res.data,
         isEmpty: res.data.length == 0
@@ -25,7 +25,7 @@ Page({
         owner: app.getCorpId()
       }).skip(
         this.data.product.length
-      ).limit(10).get()
+      ).limit(10).field({ detail: false }).get()
       let product = this.data.product
       product.push(...res.data)
       this.setData({
@@ -36,31 +36,31 @@ Page({
     }
   },
   
-  /*async showQrCode() {
+  async showQrCode(e) {
+    const productId = e.currentTarget.dataset.product
     try {
       wx.showLoading()
-      let qrFile
       const db = wx.cloud.database();
-      const corpId = app.getCorpId()
-      const res = await db.collection('qrcode-main').where({
-        corp: corpId
+      let qrFile
+      const res = await db.collection('qrcode-product').where({
+        product: productId
       }).get()
       if (res.data.length > 0) {
         qrFile = res.data[0].file
       } else {
-        const path = `page/corp-product/index?id=${corpId}`
+        const path = `page/corp-product/product-detail/index?id=${productId}`
         const res = await wx.cloud.callFunction({
           name: 'qrcode',
           data: {
-            cloudPath: `qrcode/main/${corpId}.jpg`,
+            cloudPath: `qrcode/product/${productId}.jpg`,
             path
           }
         })
         const { fileID: file } = res.result
         qrFile = file
-        await db.collection('qrcode-main').add({
+        await db.collection('qrcode-product').add({
           data: {
-            corp: corpId,
+            product: productId,
             file
           }
         })
@@ -75,5 +75,5 @@ Page({
     } finally {
       wx.hideLoading()
     }
-  }*/
+  }
 })

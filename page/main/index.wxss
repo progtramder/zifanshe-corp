@@ -60,7 +60,7 @@
 .corp-info image {
   display: block;
   border-radius: 10rpx;
-  width: 200rpx;
+  width: 150rpx;
   height: 150rpx;
   box-sizing: border-box;
 }

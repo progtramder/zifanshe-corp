@@ -20,7 +20,7 @@ Page({
       const db = wx.cloud.database();
       const res  = await db.collection('product').where({
         owner: app.getCorpId()
-      }).limit(10).get()
+      }).limit(10).field({ detail: false }).get()
       this.setData({
         product: res.data,
         isEmpty: res.data.length == 0
@@ -38,7 +38,7 @@ Page({
         owner: app.getCorpId()
       }).skip(
         this.data.product.length
-      ).limit(10).get()
+      ).limit(10).field({ detail: false }).get()
       let product = this.data.product
       product.push(...res.data)
       this.setData({

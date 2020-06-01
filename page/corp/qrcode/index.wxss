@@ -1,1 +1,13 @@
 @import "../../common/index.wxss";
+
+.exhibit-item-wrapper {
+  position: relative;
+}
+.qrcode {
+  display: block;
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  bottom: 20rpx;
+  right: 20rpx;
+}

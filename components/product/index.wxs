@@ -1,8 +1,3 @@
-var transform = function (product) {
-  var price = '￥' + product.price / 100
-  return price
-}
-
 var docImage = function (docPath) {
   var lastIndex = docPath.lastIndexOf(".")
   var sfx = docPath.slice(lastIndex)
@@ -18,4 +13,3 @@ var docImage = function (docPath) {
 }
 
 module.exports.docImage = docImage
-module.exports.transform = transform

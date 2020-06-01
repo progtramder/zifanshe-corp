@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "小程序码",
   "usingComponents": {
     "exhibit-item": "/components/exhibit/exhibit"
   }

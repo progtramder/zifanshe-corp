@@ -35,15 +35,16 @@ Page({
           status: 1 //已支付
         }).get()
         if (res.data.length > 0) {
-          for (let i = 0; i < product.detail.length; i++) {
-            if (product.detail[i].locker === true) {
-              product.detail[i].locker = false
-            }
-          }
           purchased = true
         }
+
+        //purchased = await this.checkPurchased(app.getOpenId(), product._id)
+        //解锁产品资料
+        if (purchased) {
+          this.unlockProduct(product)
+        }
       }
-      
+
       //初始化产品详情组件
       this.selectComponent("#product").init(product)
       
@@ -62,6 +63,38 @@ Page({
     } finally {
       wx.hideNavigationBarLoading()
     }
+  },
+
+  unlockProduct(product) {
+    for (let i = 0; i < product.detail.length; i++) {
+      if (product.detail[i].locker === true) {
+        product.detail[i].locker = false
+      }
+    }
+  },
+  
+  async checkPurchased(openId, productId) {
+    let purchased = false
+    const db = wx.cloud.database();
+    const _ = db.command
+    let res = await db.collection('product-binding').where({
+      customer: openId,
+      products: _.elemMatch(_.eq(productId)),
+    }).get()
+    if (res.data.length > 0) {
+      purchased = true
+    } else {
+      res = await db.collection('order').where({
+        payer: openId,
+        product: productId,
+        status: 1 //已支付
+      }).get()
+      if (res.data.length > 0) {
+        purchased = true
+      }
+    }
+
+    return purchased
   },
 
   async onPay() {
@@ -96,21 +129,13 @@ Page({
     const locker = document.locker
     const product = this.data.product
     if (product.price > 0 && locker) {
-      const db = wx.cloud.database()
-      const res = await db.collection('order').where({
-        payer: app.getOpenId(),
-        product: product._id,
-        status: 1 //已支付
-      }).get()
-      if (res.data.length == 0) {
-        wx.showModal({
-          content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
-          showCancel: false,
-          confirmColor: '#F56C6C',
-          confirmText: '知道了'
-        })
-        return
-      }
+      wx.showModal({
+        content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
+        showCancel: false,
+        confirmColor: '#F56C6C',
+        confirmText: '知道了'
+      })
+      return
     }
     const docPath = document.src
     wx.showLoading({
@@ -133,23 +158,17 @@ Page({
   },
 
   async playVideo(event) {
-    const component = event.detail
+    const video = event.detail
+    const locker = video.locker
     const product = this.data.product
-    const db = wx.cloud.database()
-    const res = await db.collection('order').where({
-      payer: app.getOpenId(),
-      product: product._id,
-      status: 1 //已支付
-    }).get()
-    if (res.data.length == 0) {
+    if (product.price > 0 && locker) {
       wx.showModal({
         content: '付费内容，购买后可解锁',//'付费内容，输入验证码或购买后可解锁',
         showCancel: false,
         confirmColor: '#F56C6C',
         confirmText: '知道了'
       })
-    } else {
-      component.unlockVideo()
+      return
     }
   },
 

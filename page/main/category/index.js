@@ -20,7 +20,7 @@ Page({
       const db = wx.cloud.database();
       const res = await db.collection('product').where({
         category: options.category
-      }).limit(10).get()
+      }).limit(10).field({ detail: false }).get()
       this.setData({
         category: options.category,
         products: res.data,
@@ -40,7 +40,7 @@ Page({
       let products = this.data.products
       const res = await db.collection('product').where({
         category: this.data.category
-      }).skip(products.length).limit(10).get()
+      }).skip(products.length).limit(10).field({ detail: false }).get()
       products.push(...res.data)
       this.setData({
         products

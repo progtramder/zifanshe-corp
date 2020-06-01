@@ -15,7 +15,6 @@ Component({
       phone: '',
       note: ''
     },
-    lockVideo: true
   },
 
   /**
@@ -79,19 +78,9 @@ Component({
       const document = e.currentTarget.dataset.document
       this.triggerEvent("viewDocument", document)
     },
-
-    dismiss() {
-      //当mask接收到touchmove消息时默认会传递给其他节点，这样会导致
-      //视频误打开，产生严重bug，所以此处截获后不再传递
-    },
-    unlockVideo(e) {
-      this.setData({
-        lockVideo: false
-      })
-    },
-
     playVideo(e) {
-      this.triggerEvent("playVideo", this)
+      const video = e.currentTarget.dataset.video
+      this.triggerEvent("playVideo", video)
     }
   }
 })
