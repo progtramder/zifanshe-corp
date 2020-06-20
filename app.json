@@ -60,8 +60,8 @@
   "networkTimeout": {
     "request": 10000,
     "connectSocket": 10000,
-    "uploadFile": 10000,
-    "downloadFile": 10000
+    "uploadFile": 100000,
+    "downloadFile": 100000
   },
   "debug": false,
   "sitemapLocation": "sitemap.json"

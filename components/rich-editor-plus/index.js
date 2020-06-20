@@ -66,6 +66,23 @@ Component({
 
     addVideo: function (e) {
       const index = e.currentTarget.dataset.index;
+      let nodeList = this.data.nodeList;
+      let videoNum = 0
+      for (let i = 0; i < nodeList.length; i++) {
+        if (nodeList[i].type == 'video') {
+          videoNum++
+        }
+      }
+
+      if (videoNum >= 5) {
+        wx.showModal({
+          content: '每个页面的视频数量不能超过5个',
+          showCancel: false,
+          confirmColor: '#F56C6C',
+          confirmText: '知道了'
+        })
+        return
+      }
       wx.chooseVideo({
         sourceType: ['album'],
         success: res => {
@@ -74,7 +91,6 @@ Component({
             locker: false,
             src: res.tempFilePath
           }
-          let nodeList = this.data.nodeList;
           nodeList.splice(index + 1, 0, node);
           this.setData({
             nodeList

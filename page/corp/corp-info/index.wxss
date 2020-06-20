@@ -17,7 +17,7 @@
 .logo {
   display: block;
   border-radius: 10rpx;
-  width: 200rpx;
+  width: 150rpx;
   height: 150rpx;
 }
 .corp-info-box {
