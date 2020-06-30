@@ -9,9 +9,9 @@
         <view class="intro-text">{{consultant.intro}}</view>
       </view>
     </view>
-    <view wx:if="{{product.length}}" class="product-section">
+    <view wx:if="{{products.length}}" class="product-section">
       <view class="product-section-text">咨询产品</view>
-        <block wx:for="{{product}}" wx:key="item">
+        <block wx:for="{{products}}" wx:key="item">
           <view class="product-item">
             <exhibit-item url="../../corp-product/product-detail/index?id={{item._id}}"
               imgpath="{{item.cover}}"

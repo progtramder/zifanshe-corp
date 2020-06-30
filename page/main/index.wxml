@@ -12,21 +12,29 @@
       </swiper-item>
     </swiper>
     <view class="contents">
+      <navigator class="item-box" url="category/index?category=diagnosis&title=组织诊断">
+        <image src="/image/diagnosis.png"/>
+        <text>组织诊断</text>
+      </navigator>
       <navigator class="item-box" url="category/index?category=consulting&title=管理咨询">
         <image src="/image/consulting.png"/>
         <text>管理咨询</text>
-      </navigator>
-      <navigator class="item-box" url="category/index?category=study&title=学习成长">
-        <image src="/image/study.png"/>
-        <text>学习成长</text>
       </navigator>
       <navigator class="item-box" url="category/index?category=hrpartner&title=HR 伙伴">
         <image src="/image/hrparter.png"/>
         <text>HR 伙伴</text>
       </navigator>
+      <navigator class="item-box" url="category/index?category=study&title=学习成长">
+        <image src="/image/study.png"/>
+        <text>学习成长</text>
+      </navigator>
       <navigator class="item-box" url="category/index?category=coach&title=团队教练">
         <image src="/image/coach.png"/>
         <text>团队教练</text>
+      </navigator>
+      <navigator class="item-box" url="category/index?category=recruitment&title=人才猎聘">
+        <image src="/image/recruitment.png"/>
+        <text>人才猎聘</text>
       </navigator>
     </view>
   </view>

@@ -14,7 +14,7 @@
   margin-top: 20rpx;
   background-color: white;
   border-radius: 20rpx;
-  height: 500rpx;
+  height: 600rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

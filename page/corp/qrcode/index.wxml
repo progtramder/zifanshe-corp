@@ -9,5 +9,6 @@
       />
       <image src="/image/qrcode.png" class="qrcode" bindtap="showQrCode" data-product="{{item._id}}" />
     </view>
+    <view style="height:20rpx"/>
   </view>
 </view>

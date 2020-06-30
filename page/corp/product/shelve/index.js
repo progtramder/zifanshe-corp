@@ -10,7 +10,7 @@ Page({
     name:  '',
     brief: '',
     price: '',
-    category: 'consulting',
+    category: 'diagnosis',
     detail: [],
     deletedFiles: [] //对于视频和图片两种类型删除数据库的同时还要删除文件
   },

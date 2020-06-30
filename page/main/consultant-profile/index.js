@@ -19,10 +19,26 @@ Page({
 
       let resProduct = await db.collection('product').where({
         owner: options.id
-      }).field({ detail: false }).get()
+      }).limit(10).field({ detail: false }).get()
       this.setData({
         consultant: resConsultant.data,
-        product: resProduct.data
+        products: resProduct.data
+      })
+    } finally {
+      wx.hideNavigationBarLoading()
+    }
+  },
+  async onReachBottom() {
+    try {
+      wx.showNavigationBarLoading()
+      const db = wx.cloud.database()
+      let products = this.data.products
+      const res = await db.collection('product').where({
+        owner: this.data.consultant._id
+      }).skip(products.length).limit(10).field({ detail: false }).get()
+      products.push(...res.data)
+      this.setData({
+        products
       })
     } finally {
       wx.hideNavigationBarLoading()

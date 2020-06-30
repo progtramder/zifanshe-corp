@@ -8,6 +8,6 @@
   position: absolute;
   width: 60rpx;
   height: 60rpx;
-  bottom: 20rpx;
+  bottom: 5rpx;
   right: 20rpx;
 }
